@@ -1,0 +1,54 @@
+﻿@model EditImageBindingModel
+@{
+    ViewData["Title"] = "EditImage";
+}
+<br />
+<br />
+<h4>@UITextConstants.EditImage</h4>
+<br />
+<br />
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="main-gallery" id="images">
+            <div class="gallery">
+                <img id="@Model.Id" src="@Model.FilePath" alt="@Model.AltText" />
+            </div>
+        </div>
+        <br />
+        <form asp-action="EditImage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumId" class="control-label"></label>
+                <select asp-for="AlbumId" asp-items="(SelectList)@ViewData["Albums"]" class="form-control"></select>
+                <span asp-validation-for="AlbumId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value=@UITextConstants.Save class="btn btn-outline-primary" />
+                <a asp-action="DeleteImage" class="btn btn-outline-primary" asp-route-id="@Model.Id">@UITextConstants.Delete</a>
+            </div>
+
+
+        </form>
+    </div>
+    <div id="myModal" class="customModal">
+        <span class="close">&times;</span>
+        <img class="customModal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Images" asp-route-id="@Model.AlbumId">@UITextConstants.BackToList</a>
+</div>
+<script src="~/js/Zoom.js"></script>
+

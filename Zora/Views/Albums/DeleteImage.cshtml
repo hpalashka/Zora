@@ -1,0 +1,37 @@
+﻿@model ImageConciseViewModel
+
+@{
+    ViewData["Title"] = "DeleteImage";
+}
+<br />
+<br />
+<h4>@UITextConstants.DeleteImage</h4>
+<h4>@UITextConstants.ConfirmDeleteImage</h4>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.FilePath" alt="@Model.AltText" />
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+
+        <form asp-action="DeleteImage">
+            <input type="submit" value="@UITextConstants.Delete" class="btn btn-outline-primary" /> |
+            <a asp-action="Index">@UITextConstants.BackToList</a>
+        </form>
+    </div>
+</div>
+

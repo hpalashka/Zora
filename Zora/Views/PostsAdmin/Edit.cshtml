@@ -1,0 +1,96 @@
+﻿@model PostBindingModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+<br />
+<h4>@UITextConstants.EditPost</h4>
+<br />
+<hr />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data" asp-controller="PostsController" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            @if (Model.ImagePath != null)
+            {
+                <img src="@Model.ImagePath" alt="@Model.AltText" class="image-details" />
+                <input asp-for="ImageFileFromDatabase" class="form-control" type="hidden" />
+                <br />
+                <br />
+                <p>
+                    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#changeImage" aria-expanded="false" aria-controls="collapseExample">
+                        @UITextConstants.ChangeImage
+                    </button>
+                    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#deleteImage" aria-expanded="false" aria-controls="collapseExample">
+                        @UITextConstants.DeleteImage
+                    </button>
+                </p>
+                <div class="collapse" id="changeImage">
+
+                    <div class="form-group">
+                        <label asp-for="ImageFile" class="control-label"></label>
+                        <div class="input-group">
+                            <div class="custom-file input-group-append">
+                                <input asp-for="ImageFile" type="file" class="custom-file-input" id="myInput" aria-describedby="myInput">
+                                <label class="custom-file-label" for="myInput">@UITextConstants.BackToList</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="collapse" id="deleteImage">
+                    <input asp-for="ConfirmDelete" /><label>@UITextConstants.DeleteImageConfirmed</label>
+                </div>
+            }
+            else
+            {
+                <p>
+                    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#changeImage" aria-expanded="false" aria-controls="collapseExample">
+                        @UITextConstants.AddImage
+                    </button>
+
+                </p>
+                <div class="collapse" id="changeImage">
+
+                    <div class="form-group">
+                        <label asp-for="ImageFile" class="control-label"></label>
+                        <div class="input-group">
+                            <div class="custom-file input-group-append">
+                                <input asp-for="ImageFile" type="file" class="custom-file-input" id="myInput" aria-describedby="myInput">
+                                <label class="custom-file-label" for="myInput">@UITextConstants.ChangeImage</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-page-handler="Edit" type="submit" value="@UITextConstants.Save" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>
+@section Scripts
+{
+    <script src="~/js/Upload.js"></script>
+}
+

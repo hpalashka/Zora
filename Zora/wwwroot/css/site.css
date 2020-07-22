@@ -1,0 +1,585 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.image-container {
+    position: relative;
+}
+
+
+.row-chat {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+/*gallery start*/
+
+
+img, video {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1.5em;
+}
+
+.masonry-wrapper {
+    padding: 1.5em;
+    /*max-width: 960px;*/
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(100px,1fr));
+    grid-gap: 10px;
+    grid-auto-rows: 0;
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .masonry {
+        grid-template-columns: repeat(2, minmax(100px,1fr));
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .masonry {
+        grid-template-columns: repeat(3, minmax(100px,1fr));
+    }
+}
+
+.masonry-item, .masonry-content {
+    /*border-radius: 3px;*/
+    overflow: hidden;
+}
+
+.masonry-item {
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .3));
+    transition: filter .25s ease-in-out;
+}
+
+    .masonry-item:hover {
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
+    }
+
+.masonry-footer {
+    font-size: .75em;
+    opacity: .25;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    margin-bottom: -1.5em;
+    transition: opacity 1s ease-in-out;
+}
+
+    .masonry-footer a {
+        color: currentColor;
+    }
+
+    .masonry-footer:hover, .masonry-footer:active, .masonry-footer:focus {
+        opacity: .75;
+    }
+
+/*gallery end*/
+
+
+/*gallery cover start*/
+.gallery-image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+}
+/*gallery cover end*/
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+
+.header-bold {
+    font-weight: bold;
+}
+
+.hr-bold {
+    height: 5px;
+    color: black;
+}
+
+/*File Input field*/
+/*input[type=file] {
+    color: transparent;
+}*/
+
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+    .videoWrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+
+
+/*manage gallery*/
+
+.gallery-space {
+    padding-bottom: 2rem;
+}
+
+.gallery-image {
+    height: 300px;
+    width: auto;
+}
+
+.gallery-text {
+    text-align: left;
+}
+
+.gallery-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.gallery-container {
+    padding-bottom: 30%;
+}
+
+div.biggerimage {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.gallery-item {
+    padding-bottom: 0.5rem;
+}
+
+/*-------------------*/
+
+.image-details {
+    width: 300px;
+    height: 100%
+}
+
+
+/*.comment-action {
+    padding: 0 !important;
+    background: #f6f8f9 !important;
+    clear: both;
+    min-height: 35px;
+}*/
+ul.comments {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    display: block;
+}
+
+.comments .comment .avatar {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+
+.comments .comment {
+    display: block;
+    position: relative;
+    padding-left: 92px;
+}
+
+    .comments .comment .comment-body header {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+        .comments .comment .comment-body header .pubdate {
+            color: #777;
+            font-size: .9em;
+        }
+
+        .comments .comment .comment-body header .userlink {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+
+    .comments .comment .comment-body {
+        padding: 0px 3px;
+        padding-bottom: 12px;
+        padding-top: 8px;
+    }
+
+
+footer .reply-link {
+    float: right;
+    color: #777;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.comments .comment .replies {
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+
+/*.tiles-body{padding: 1rem;}*/
+
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+/*https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp*/
+* {
+    box-sizing: border-box;
+}
+
+.galleryRow {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.galleryColumn {
+    -ms-flex: 33.3%; /* IE10 */
+    flex: 33.3%;
+    max-width: 33.3%;
+    padding: 0 4px;
+}
+
+    .galleryColumn img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding-left: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .galleryColumn {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .galleryColumn {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+
+
+
+/*gallery*/
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.gallery-wrapper {
+    /*width: 80%;*/
+    margin: 0 auto;
+    /*column-count: 3;*/
+    column-gap: .5em;
+}
+
+@media screen and (max-width: 768px) {
+
+    .gallery-wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .gallery-wrapper {
+        width: 100%;
+    }
+}
+
+.main-gallery {
+    margin: 0;
+    width: 100%;
+}
+
+    .main-gallery div img {
+        margin: 0 0 .5em 0;
+    }
+
+@media screen and (max-width: 768px) {
+
+    .gallery-wrapper {
+        column-count: 2;
+    }
+
+    /*gallery buttons*/
+    .bottom-right {
+        position: absolute;
+        color: white;
+        bottom: 8px;
+        right: 16px;
+        background: rgba(0, 0, 0, 0);
+        border-color: rgba(0, 0, 0, 0);
+    }
+
+    .bottom-left {
+        position: absolute;
+        color: white;
+        bottom: 11px;
+        left: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .gallery-wrapper {
+        column-count: 1;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .gallery-wrapper {
+        column-count: 1;
+    }
+}
+
+.customModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*overflow: auto;*/
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+    .customModal .customModal-content {
+        margin: auto;
+        display: block;
+        /*width: 80%;*/
+        width: auto;
+        /*height: 95%;*/
+        height: 90%;
+        /*max-width: 700px;*/
+        max-width: 95%;
+    }
+
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    /*height: 150px;*/
+}
+
+.customModal-content, #caption {
+    animation-name: zoom;
+    /*animation-duration: 0.6s;*/
+    animation-duration: 1s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 60px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover, .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+@media screen and (min-width: 800px) {
+    .customModal-content {
+        width: 80%;
+    }
+
+
+    .hovereffect {
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+        .hovereffect .overlay {
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            left: 0;
+            top: auto;
+            bottom: 0;
+            padding: 1em;
+            height: 4.75em;
+            /*background: rgba(0, 0, 0, 0.1);*/
+            background-image: linear-gradient(rgba(51, 51, 51,0), rgba(51, 51, 51,0.8));
+            /*color: black;*/
+            -webkit-transition: -webkit-transform 0.35s;
+            transition: transform 0.35s;
+            -webkit-transform: translate3d(0,100%,0);
+            transform: translate3d(0,100%,0);
+            visibility: hidden;
+        }
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: -webkit-transform 0.35s;
+            transition: transform 0.35s;
+        }
+
+        /*.hovereffect:hover img {
+    -webkit-transform: translate3d(0,-10%,0);
+    transform: translate3d(0,-10%,0);
+}*/
+
+        .hovereffect .bottom-left {
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 1.4em;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0);
+            float: left;
+            margin: 0px;
+            display: inline-block;
+        }
+
+
+        .hovereffect .bottom-right {
+            float: right;
+            color: #fff;
+            font-size: 1.4em;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+        }
+
+
+            .hovereffect .bottom-left,
+            .hovereffect .bottom-right span {
+                -webkit-transition: -webkit-transform 0.35s;
+                transition: transform 0.35s;
+                -webkit-transform: translate3d(0,200%,0);
+                transform: translate3d(0,200%,0);
+                visibility: visible;
+            }
+
+
+        .hovereffect:hover .overlay,
+        .hovereffect:hover .bottom-left,
+        .hovereffect:hover .bottom-right {
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+
+        .hovereffect:hover .overlay {
+            visibility: visible;
+        }
+}

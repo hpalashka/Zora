@@ -1,0 +1,40 @@
+﻿@model PostConciseIndexViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<br />
+<h4>@UITextConstants.DeletePostConfirm</h4>
+<br />
+<br />
+<div>
+    <div class="col-md-6 pb-3">
+        <img  src="@Model.ImagePath" alt="@Model.Title"/>
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@UITextConstants.Delete" class="btn btn-outline-primary" /> |
+        <a asp-action="Index">@UITextConstants.BackToList</a>
+    </form>
+</div>

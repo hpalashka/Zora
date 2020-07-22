@@ -1,0 +1,36 @@
+﻿@model Zora.Web.Models.Statistics.ViewModels.StatisticsViewModel
+
+@{
+    ViewData["Title"] = "Statistics";
+}
+<br />
+<br />
+<h4>@UITextConstants.Statistics</h4>
+<br />
+<br />
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TotalStudents)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TotalStudents)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TotalPaidAmount)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TotalPaidAmount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>

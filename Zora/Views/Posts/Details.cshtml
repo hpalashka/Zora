@@ -1,0 +1,33 @@
+﻿@model PostViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<br />
+<h4> @Html.DisplayFor(model => model.Title) </h4>
+<br />
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        @if (Model.ImagePath != null)
+        {
+            <dd>
+                <img src="@Model.ImagePath" alt="@Model.Title" class="image-details" />
+                <br />
+                <br />
+            </dd>
+        }
+        <dd>
+            <b>  @Html.DisplayFor(model => model.CreatedDate) </b>
+        </dd>
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>
+
+
+

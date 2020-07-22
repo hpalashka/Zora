@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PostConciseIndexViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<h4>@UITextConstants.Posts</h4>
+<br />
+<br />
+<p>
+    <a asp-action="Create">@UITextConstants.CreatePost</a>
+</p>
+<br />
+
+@foreach (var item in Model)
+{
+    <hr />
+    <div class="row">
+
+        <div class="col-lg-10 col-md-10">
+            <span class="header-bold">
+                @Html.DisplayFor(modelItem => item.Title)
+            </span>
+            <br />
+            <span class="header-bold">
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </span>
+            <br />
+            @Html.Raw(item.Description.PadRight(500, ' ').Substring(0, 500))...
+            <br />
+        </div>
+        <div class="col-lg-2 col-md-2">
+            <a asp-action="Edit" asp-route-id="@item.Id">@UITextConstants.Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">@UITextConstants.Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">@UITextConstants.Delete</a>
+        </div>
+    </div>
+    <br />
+}
+
+

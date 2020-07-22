@@ -1,0 +1,43 @@
+﻿@model HomePageCoversBindingModel
+@{
+    ViewData["Title"] = "UploadImage";
+}
+<br />
+<br />
+<h4>@UITextConstants.UploadImage</h4>
+<br />
+<h5 style="color:red">@UITextConstants.UploadWarning</h5>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data" asp-controller="AlbumsController" asp-action="UploadImage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" placeholder="@UITextConstants.RequiredField"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                <label asp-for="UploadImage" class="control-label"></label>
+                <div class="input-group">
+                    <div class="custom-file input-group-append">
+                        <input asp-for="UploadImage" type="file" class="custom-file-input" id="myInput" aria-describedby="myInput">
+                        <label class="custom-file-label" for="myInput">@UITextConstants.ChooseFile</label>
+                    </div>
+                </div>
+                <span asp-validation-for="UploadImage" class="text-danger"></span>
+            </div>
+            <input asp-page-handler="Upload" class="btn btn-outline-primary" type="submit" value="@UITextConstants.Save">
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/Upload.js"></script>
+}
+

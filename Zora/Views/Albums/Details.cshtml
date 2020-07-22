@@ -1,0 +1,39 @@
+﻿@model AlbumDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<br />
+<h4>@UITextConstants.AlbumDetails</h4>
+<br />
+<br />
+<div>
+    <hr />
+    <div class="col-md-6"> <img src="@Model.FileName" alt="@Model.Title" /></div>
+
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagesCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImagesCount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@UITextConstants.Edit</a> |
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>

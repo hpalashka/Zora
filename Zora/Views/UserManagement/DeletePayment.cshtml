@@ -1,0 +1,51 @@
+﻿@model PaymentsViewModel
+
+@{
+    ViewData["Title"] = "DeletePayment";
+}
+<br />
+<br />
+<h4>@UITextConstants.Delete</h4>
+<br />
+<h5>@UITextConstants.DeleteImageConfirmed</h5>
+<br />
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paid)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paid)
+        </dd>
+    </dl>
+
+    <form asp-action="DeletePayment">
+        <input type="submit" value="@UITextConstants.Delete" class="btn btn-outline-primary" /> |
+        <a asp-action="Index">@UITextConstants.BackToList</a>
+    </form>
+</div>

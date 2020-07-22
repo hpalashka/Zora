@@ -1,0 +1,28 @@
+﻿@model AlbumConciseViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<br />
+<h4>@UITextConstants.DeleteAlbum</h4>
+<h5>@UITextConstants.ConfirmDeleteAlbum</h5>
+
+<div>
+    <br />
+    <hr />
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@UITextConstants.Delete" class="btn btn-outline-primary" /> |
+        <a asp-action="Index">@UITextConstants.BackToList</a>
+    </form>
+</div>

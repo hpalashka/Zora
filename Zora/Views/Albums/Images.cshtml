@@ -1,0 +1,26 @@
+﻿@model List<ImageViewModel>
+@{
+    ViewData["Title"] = "Images";
+}
+<br />
+<br />
+<h4>@ViewData["Album"] </h4>
+<br />
+<br />
+<a asp-action="Index">@UITextConstants.BackToList</a>
+<br />
+
+
+<div class="masonry-wrapper">
+    <div class="masonry">
+        @foreach (var item in Model)
+        {
+            <div class="masonry-item">
+                <img src="@item.FilePath" alt="@item.AltText" class="masonry-content" />
+            </div>
+
+        }
+    </div>
+</div>
+
+

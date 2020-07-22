@@ -1,0 +1,44 @@
+﻿@model PaymentsBindingModel
+@{
+    ViewData["Title"] = "AddPayment";
+}
+<br />
+<br />
+<h4>@UITextConstants.NewPayment</h4>
+<br />
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPayment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <textarea asp-for="Title" class="form-control" rows="5"> </textarea>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <input asp-for="StudentId" type="hidden" />
+            <div class="form-group">
+                <input type="submit" value="@UITextConstants.Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

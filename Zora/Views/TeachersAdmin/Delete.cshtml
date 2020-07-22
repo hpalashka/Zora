@@ -1,0 +1,35 @@
+﻿@model TeacherViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<br />
+<h4>@UITextConstants.Delete</h4>
+<br />
+<br />
+<div>
+    <div class="pb-3 col-md-4">
+        <img src="@Model.FilePath" alt="Zora_teachers" />
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@UITextConstants.Delete" class="btn btn-outline-primary" /> |
+        <a asp-action="Index">@UITextConstants.BackToList</a>
+    </form>
+</div>

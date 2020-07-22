@@ -1,0 +1,54 @@
+﻿@model AlbumEditBindingModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+<br />
+<h4>@UITextConstants.EditAlbum</h4>
+<br />
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <img src="@Model.FileName" alt="@Model.Title" />
+        <br />
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadImage" class="control-label"></label>
+                <div class="input-group">
+                    <div class="custom-file input-group-append">
+                        <input asp-for="UploadImage" type="file" class="custom-file-input" id="myInput" aria-describedby="myInput">
+                        <label class="custom-file-label" for="myInput">@UITextConstants.ChooseFile</label>
+                    </div>
+                </div>
+                <span asp-validation-for="UploadImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@UITextConstants.Save" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@UITextConstants.BackToList</a>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/js/Upload.js"></script>
+}

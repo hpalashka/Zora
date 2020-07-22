@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AlbumConciseViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<h4>@UITextConstants.Galleries</h4>
+<br />
+<br />
+<div class="container gallery-container biggerimage">
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 gallery-item">
+                <a href="@Url.Action("Images", "Gallery", new { id = item.Id})">
+                    <figure>
+                        <img src="@item.FileName" alt="@item.Title" />
+                        <figcaption>@item.Title</figcaption>
+                    </figure>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+

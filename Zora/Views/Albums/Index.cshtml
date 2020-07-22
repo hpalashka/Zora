@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AlbumConciseViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<h4>@UITextConstants.Albums</h4>
+<br />
+<br />
+<p>
+    <a asp-action="Create">@UITextConstants.CreateAlbum</a>
+</p>
+<br />
+
+<div class="card-group">
+
+    @foreach (var album in Model)
+    {
+        <div class="col-md-6 col-lg-4" style="padding-bottom:10px;">
+            <div class="card border-primary mb-5 h-60">
+                <img class="card-img-top" src="@album.FileName" alt="@album.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@album.Title</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        <a asp-action="Edit" asp-route-id="@album.Id">@UITextConstants.Edit</a> |
+                        <a asp-action="Details" asp-route-id="@album.Id">@UITextConstants.Details</a> | <a asp-action="Delete" asp-route-id="@album.Id">@UITextConstants.Delete</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a asp-action="UploadImage" asp-route-id="@album.Id">@UITextConstants.UploadImage</a> |
+                        <a asp-action="Images" asp-route-id="@album.Id">@UITextConstants.Images</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+
+</div>

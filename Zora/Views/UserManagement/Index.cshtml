@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Zora.Web.Models.Students.ViewModels.StudentsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<h4>@UITextConstants.UserManagement</h4>
+<br />
+<div class="row">
+    <div class="col-md-3">
+        <a asp-action="OutStandingPayments" class="btn btn-outline-primary btn-sm btn-block p-1 my-1">
+            @UITextConstants.OutStandingPayments
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a asp-action="AddStudent" class="btn btn-outline-primary btn-sm btn-block p-1 my-1">
+            @UITextConstants.AddStudent
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a asp-action="Statistics" class="btn btn-outline-primary btn-sm btn-block p-1 my-1">
+            @UITextConstants.Statistics
+        </a>
+    </div>
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr class="d-flex">
+            <th class="col-3">
+                @UITextConstants.FullName
+            </th>
+            <th class="col-3">
+                @UITextConstants.Email</
+            </th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+
+            foreach (var item in Model)
+            {
+                <tr class="d-flex">
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="col-2">
+                        <a asp-action="Payments" asp-route-id=@item.Id class="btn btn-outline-primary btn-sm btn-block p-1 my-1">@UITextConstants.Payments</a>
+                    </td>
+                    <td class="col-2">
+                        <a asp-action="DeleteStudent" asp-route-id=@item.Id class="btn btn-outline-primary btn-sm btn-block p-1 my-1">@UITextConstants.Delete</a>
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
