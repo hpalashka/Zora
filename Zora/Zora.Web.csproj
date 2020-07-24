@@ -29,8 +29,8 @@
   <ItemGroup>
     <Folder Include="Areas\" />
     <Folder Include="Data\Migrations\" />
-    <Folder Include="wwwroot\images\Albums\thumb\" />
     <Folder Include="wwwroot\images\Covers\thumb\" />
+    <Folder Include="wwwroot\images\albums\" />
     <Folder Include="wwwroot\images\Posts\thumb\" />
     <Folder Include="wwwroot\images\Teachers\thumb\" />
     <Folder Include="wwwroot\images\Uploads\" />

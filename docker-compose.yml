@@ -141,22 +141,6 @@ services:
         depends_on:
             - data
 
-     watchdog:
-        image: docker-container-watchdog:latest
-        mem_limit: 50m
-        cpus: 1
-        environment:
-        - DOCKER_HOSTMACHINE=${HOSTNAME}
-        volumes:
-        - ./.aspnet/watchdog/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
-        restart: on-failure
-        security_opt:
-        - label:disable
-        ports: 
-            - "5015:80"         
-        networks: 
-            - zora-network
-
 networks:
     zora-network:
 
