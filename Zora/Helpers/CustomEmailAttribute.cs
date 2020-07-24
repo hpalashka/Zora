@@ -31,11 +31,11 @@ namespace Zora.Commons.Helpers
                     return match.Groups[1].Value + domainName;
                 }
             }
-            catch (RegexMatchTimeoutException e)
+            catch (RegexMatchTimeoutException)
             {
                 return new ValidationResult(ValidationConstants.InvalidEmail);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 return new ValidationResult(ValidationConstants.InvalidEmail);
             }

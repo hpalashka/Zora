@@ -102,12 +102,13 @@ namespace Zora.Shared.Infrastructure
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        rmq.Host("localhost");//todo
-                        //rmq.Host("rabbitmq", host =>
-                        //{
-                        //    host.Username("rabbitmq");
-                        //    host.Password("rabbitmq");
-                        //});
+                        //rmq.Host("localhost");
+                        //todo
+                        rmq.Host("rabbitmq", host =>
+                        {
+                            host.Username("rabbitmq");
+                            host.Password("rabbitmq");
+                        });
 
                         rmq.UseHealthCheck(context);
 
@@ -131,7 +132,7 @@ namespace Zora.Shared.Infrastructure
 
             services.AddHangfireServer();
 
-            //  services.AddHostedService<MessagesHostedService>(); //todo!
+            services.AddHostedService<MessagesHostedService>(); //todo
 
             return services;
         }
@@ -146,11 +147,11 @@ namespace Zora.Shared.Infrastructure
             healthChecks
                 .AddSqlServer(configuration.GetDefaultConnectionString());
 
-            healthChecks
-                .AddRabbitMQ(rabbitConnectionString: "amqp://localhost"); //todo
+            // healthChecks
+            //    .AddRabbitMQ(rabbitConnectionString: "amqp://localhost"); //todo
 
-            //healthChecks
-            //    .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");
+            healthChecks
+                .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");
 
             return services;
         }

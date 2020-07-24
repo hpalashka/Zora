@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -73,6 +74,12 @@ namespace Zora
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<ZoraDbContext>().Database.Migrate();
+            }
+
             if (env.IsDevelopment())
             {
                 app
@@ -86,13 +93,19 @@ namespace Zora
             }
 
             app
-                .UseHttpsRedirection()
+                //.UseHttpsRedirection()
                 .UseStaticFiles()
+                .UseCors(options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod())
                 .UseRouting()
                 .UseJwtCookieAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints => endpoints
                     .MapDefaultControllerRoute());
+
+
         }
     }
 }
