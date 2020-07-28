@@ -10,7 +10,7 @@ using Zora.Web.Data;
 namespace Zora.Web.Data.Migrations
 {
     [DbContext(typeof(ZoraDbContext))]
-    [Migration("20200713082920_Initial")]
+    [Migration("20200727150129_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,12 +33,12 @@ namespace Zora.Web.Data.Migrations
                         .HasMaxLength(255);
 
                     b.Property<string>("CoverPhoto")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -81,12 +81,12 @@ namespace Zora.Web.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(20000);
+                        .HasColumnType("nvarchar(2000)")
+                        .HasMaxLength(2000);
 
                     b.Property<string>("ImageFile")
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -135,8 +135,8 @@ namespace Zora.Web.Data.Migrations
 
                     b.Property<string>("CoverPhoto")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("Description")
                         .IsRequired()

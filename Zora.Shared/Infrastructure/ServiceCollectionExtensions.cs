@@ -147,8 +147,8 @@ namespace Zora.Shared.Infrastructure
             healthChecks
                 .AddSqlServer(configuration.GetDefaultConnectionString());
 
-            // healthChecks
-            //    .AddRabbitMQ(rabbitConnectionString: "amqp://localhost"); //todo
+            //healthChecks
+            //   .AddRabbitMQ(rabbitConnectionString: "amqp://localhost"); //todo
 
             healthChecks
                 .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");

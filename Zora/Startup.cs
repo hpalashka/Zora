@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Refit;
 using Zora.EmailService;
 using Zora.Shared.Infrastructure;
+using Zora.Shared.Services;
 using Zora.Shared.Services.Identity;
 using Zora.Web.Data;
 using Zora.Web.Infrastructure;
@@ -103,8 +104,7 @@ namespace Zora
                 .UseJwtCookieAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints => endpoints
-                    .MapDefaultControllerRoute());
-
+                .MapDefaultControllerRoute());
 
         }
     }

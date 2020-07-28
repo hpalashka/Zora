@@ -63,6 +63,7 @@ namespace Zora.Payments.Controllers
 
         [HttpGet]
         [Route(Id)]
+        [AllowAnonymous]
         public IEnumerable<PaymentsViewModel> Payments(int id)
         {
             return _paymentService.Payments(id);

@@ -11,6 +11,9 @@ namespace Zora.Web.Services.Students
         [Get("/Students")]
         Task<IEnumerable<StudentsViewModel>> Students();
 
+        [Get("/Students/{id}")]
+        Task<StudentsViewModel> Student(string id);
+
 
         [Post("/Students")]
         Task<int> AddStudent(StudentBindingModel payment);

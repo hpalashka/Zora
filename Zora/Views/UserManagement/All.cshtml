@@ -5,15 +5,13 @@
 <br />
 <h4>@UITextConstants.Administration</h4>
 
-@*@if (User.Identity.IsAuthenticated && User.IsInRole(Constants.AdministratorRoleName))
-{*@
-@*todo*@
+@if (User.Identity.IsAuthenticated && User.IsInRole(Constants.AdministratorRoleName))
+{
     <li><a asp-area="" asp-controller="Albums" asp-action="Index">@UITextConstants.Albums</a></li>
     <li><a asp-area="" asp-controller="TeachersAdmin" asp-action="Index">@UITextConstants.Teachers</a></li>
     <li><a asp-area="" asp-controller="Posts" asp-action="Index">@UITextConstants.Posts</a></li>
     <li><a asp-area="" asp-controller="HomePageManagement" asp-action="Index">@UITextConstants.HomePageManagement</a></li>
     <li><a asp-area="" asp-controller="UserManagement" asp-action="Index">@UITextConstants.UserManagement</a></li>
-   
-@*}*@
+}
 
 

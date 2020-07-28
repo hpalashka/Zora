@@ -4,6 +4,8 @@
     {
         string UserId { get; }
 
+        string Email { get; }
+
         bool IsAdministrator { get; }
     }
 }

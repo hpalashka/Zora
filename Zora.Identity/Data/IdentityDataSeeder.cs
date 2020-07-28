@@ -14,7 +14,7 @@ namespace Zora.Identity.Data
         private readonly RoleManager<IdentityRole> roleManager;
 
         public IdentityDataSeeder(
-            UserManager<User> userManager, 
+            UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
@@ -39,7 +39,8 @@ namespace Zora.Identity.Data
                     {
                         UserName = "hristina.palashka@gmail.com",
                         Email = "hristina.palashka@gmail.com",
-                        SecurityStamp = "RandomSecurityStamp"
+                        SecurityStamp = "RandomSecurityStamp",
+                        Name = "Hristina Palashka"
                     };
 
                     await userManager.CreateAsync(adminUser, "Parola123@");

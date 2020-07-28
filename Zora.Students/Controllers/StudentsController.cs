@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MassTransit.Initializers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Zora.Students.Controllers
         //todo add edit student
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<int> AddStudent(StudentBindingModel student)
         {
 
@@ -54,10 +56,25 @@ namespace Zora.Students.Controllers
 
 
         [HttpGet]
-
         public IEnumerable<StudentsViewModel> Students()
         {
             return _studentsService.Students();
+
+        }
+
+
+        [HttpGet]
+        [Route(Id)]
+        [AllowAnonymous]
+        public async Task<StudentsViewModel> Student(string id)
+        {
+            return await _studentsService.FindStudent(id)
+                .Select(s => new StudentsViewModel()
+                {
+                    Id = s.Id,
+                    Email = s.Email,
+                    Name = s.Name
+                });
 
         }
 

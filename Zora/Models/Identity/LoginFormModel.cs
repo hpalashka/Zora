@@ -1,15 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Zora.Shared.Data;
 
 namespace Zora.Web.Models.Identity
 {
       public class LoginFormModel
     {
-        [Required]
+        [Required(ErrorMessage = ValidationConstants.RequiredField)]
         [EmailAddress]
-        [Display(Name = "Email Address")]
+        [Display(Name = ValidationConstants.Email)]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ValidationConstants.RequiredField)]
+        [DataType(DataType.Password)]
+        [Display(Name = ValidationConstants.Password)]
         public string Password { get; set; }
     }
 }

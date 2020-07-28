@@ -12,13 +12,14 @@
         {
             services
                 .AddIdentity<User, IdentityRole>(options =>
-                    {
-                        options.Password.RequiredLength = 6;
-                        options.Password.RequireDigit = false;
-                        options.Password.RequireLowercase = false;
-                        options.Password.RequireNonAlphanumeric = false;
-                        options.Password.RequireUppercase = false;
-                    })
+                {
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.User.RequireUniqueEmail = true;
+                })
                     .AddEntityFrameworkStores<IdentityDbContext>();
 
             return services;

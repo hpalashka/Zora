@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Zora.Shared.Infrastructure;
+using Zora.Shared.Services;
 using Zora.Students.Data;
 using Zora.Students.Services;
 
@@ -19,6 +20,7 @@ namespace Zora.Students
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddWebService<StudentsDbContext>(this.Configuration)
+                .AddTransient<IDataSeeder, StudentsDataSeeder>()
                 .AddScoped<IStudentsService, StudentsService>()
                 .AddMessaging(this.Configuration);
 

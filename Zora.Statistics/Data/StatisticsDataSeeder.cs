@@ -21,7 +21,7 @@ namespace Zora.Statistics.Data
             {
                 TotalAmount = 0,
                 TotalPaidAmount = 0,
-                TotalStudents = 0
+                TotalStudents = 1
             });
 
             this.db.SaveChanges();

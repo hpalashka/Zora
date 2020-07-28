@@ -1,0 +1,33 @@
+﻿@model LoginFormModel
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login" asp-controller="Identity">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">@UITextConstants.Login</button>
+            </div>
+            <div class="form-group">
+                <p>
+                    <a asp-controller="Users" asp-action="Register">@UITextConstants.Register</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

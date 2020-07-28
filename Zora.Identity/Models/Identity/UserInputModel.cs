@@ -1,9 +1,8 @@
-﻿namespace Zora.Identity.Models.Identity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Zora.Identity.Models.Identity
 {
-    using System.ComponentModel.DataAnnotations;
-
     using static Data.DataConstants.Identity;
-
     public class UserInputModel
     {
         [EmailAddress]
@@ -14,5 +13,9 @@
 
         [Required]
         public string Password { get; set; }
+
+
+        [MaxLength(MaxNameLength)]
+        public string Name { get; set; }
     }
 }

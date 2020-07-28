@@ -29,9 +29,7 @@ namespace Zora.Shared.Infrastructure
                     .AllowAnyMethod())
                 .UseAuthentication()
                 .UseAuthorization()
-                  //.UseEndpoints(endpoints => endpoints
-                  //    .MapControllers());
-                  .UseEndpoints(endpoints =>
+                .UseEndpoints(endpoints =>
                   {
                       endpoints.MapHealthChecks("/health", new HealthCheckOptions
                       {

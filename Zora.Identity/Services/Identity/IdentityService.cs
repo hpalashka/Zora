@@ -16,7 +16,7 @@ namespace Zora.Identity.Services.Identity
         private readonly ITokenGeneratorService jwtTokenGenerator;
 
         public IdentityService(
-            UserManager<User> userManager, 
+            UserManager<User> userManager,
             ITokenGeneratorService jwtTokenGenerator)
         {
             this.userManager = userManager;
@@ -28,7 +28,8 @@ namespace Zora.Identity.Services.Identity
             var user = new User
             {
                 Email = userInput.Email,
-                UserName = userInput.Email
+                UserName = userInput.Email,
+                Name = userInput.Name
             };
 
             var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
@@ -62,7 +63,7 @@ namespace Zora.Identity.Services.Identity
         }
 
         public async Task<Result> ChangePassword(
-            string userId, 
+            string userId,
             ChangePasswordInputModel changePasswordInput)
         {
             var user = await this.userManager.FindByIdAsync(userId);

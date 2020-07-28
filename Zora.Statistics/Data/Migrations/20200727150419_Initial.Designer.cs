@@ -9,8 +9,8 @@ using Zora.Statistics.Data;
 namespace Zora.Statistics.Data.Migrations
 {
     [DbContext(typeof(StatisticsDbContext))]
-    [Migration("20200721063342_AddedTotalPaidAmount")]
-    partial class AddedTotalPaidAmount
+    [Migration("20200727150419_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -10,7 +10,7 @@ using Zora.Payments.Data;
 namespace Zora.Payments.Data.Migrations
 {
     [DbContext(typeof(PaymentsDbContext))]
-    [Migration("20200715133601_Initial")]
+    [Migration("20200727150514_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,40 @@ namespace Zora.Payments.Data.Migrations
                     b.Property<bool>("Paid")
                         .HasColumnType("bit");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<string>("UserId")
+                    b.HasKey("Id");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("Zora.Shared.Data.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Published")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("serializedData")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Messages");
                 });
 #pragma warning restore 612, 618
         }

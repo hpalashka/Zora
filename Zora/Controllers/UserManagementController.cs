@@ -35,7 +35,10 @@ namespace Zora.Web.Areas.Admin.Controllers
             _outStandingPayments = outStandingPayments;
             _statistics = statistics;
         }
-
+        public IActionResult All()
+        {
+            return View();
+        }
 
         public async Task<ActionResult> Index()
         {
@@ -114,19 +117,19 @@ namespace Zora.Web.Areas.Admin.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult> AddStudent(StudentBindingModel model)
-        {
-            var result = await _students.AddStudent(model);
+        //[HttpPost]
+        //public async Task<ActionResult> AddStudent(StudentBindingModel model)
+        //{
+        //    var result = await _students.AddStudent(model);
 
-            if (result == 0)
-            {
-                return NotFound();
-            }
+        //    if (result == 0)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return RedirectToAction(nameof(Index));
+        //    return RedirectToAction(nameof(Index));
 
-        }
+        //}
 
 
         public async Task<IActionResult> DeleteStudent(int id)
@@ -136,6 +139,7 @@ namespace Zora.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
 
             //todo delete payments for student
+            //todo delete user
         }
 
 

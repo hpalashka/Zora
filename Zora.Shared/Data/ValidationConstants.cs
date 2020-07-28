@@ -42,6 +42,10 @@
         public const string TotalAmount = "Въведени плащания";
 
 
+        public const int MinEmailLength = 5;
+        public const int MaxEmailLength = 100;
+        public const int MinPasswordLength = 5;
+        public const int MaxPasswordLength = 100;
         public const int MaxTitleLength = 100;
         public const int MaxPaymentTitleLength = 250;
         public const int MaxFileNameLength = 250;

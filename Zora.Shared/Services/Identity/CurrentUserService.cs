@@ -12,18 +12,20 @@ namespace Zora.Shared.Services.Identity
 
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            this.user = httpContextAccessor.HttpContext?.User;
+            user = httpContextAccessor.HttpContext?.User;
 
             if (user == null)
             {
                 throw new InvalidOperationException("This request does not have an authenticated user.");
             }
 
-            this.UserId = this.user.FindFirstValue(ClaimTypes.NameIdentifier);
+            UserId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+            Email = user.FindFirstValue(ClaimTypes.Name);
         }
 
         public string UserId { get; }
+        public string Email { get; }
 
-        public bool IsAdministrator => this.user.IsAdministrator();
+        public bool IsAdministrator => user.IsAdministrator();
     }
 }

@@ -175,6 +175,10 @@ namespace Zora.Identity.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);

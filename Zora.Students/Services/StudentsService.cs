@@ -39,6 +39,10 @@ namespace Zora.Students.Services
             return await this.All().FirstOrDefaultAsync(c => c.Id == id);
         }
 
+        public async Task<Student> FindStudent(string email)
+        {
+            return await this.All().FirstOrDefaultAsync(c => c.Email == email);
+        }
 
         public IEnumerable<StudentsViewModel> Students()
         {

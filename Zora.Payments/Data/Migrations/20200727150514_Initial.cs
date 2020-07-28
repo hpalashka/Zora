@@ -8,6 +8,21 @@ namespace Zora.Payments.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(nullable: false),
+                    Published = table.Column<bool>(nullable: false),
+                    serializedData = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Payments",
                 columns: table => new
                 {
@@ -18,7 +33,7 @@ namespace Zora.Payments.Data.Migrations
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
                     Paid = table.Column<bool>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    StudentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,6 +43,9 @@ namespace Zora.Payments.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Messages");
+
             migrationBuilder.DropTable(
                 name: "Payments");
         }
