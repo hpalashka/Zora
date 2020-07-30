@@ -56,7 +56,8 @@ namespace Zora.Shared.Infrastructure
 
         public static IServiceCollection AddTokenAuthentication(
             this IServiceCollection services,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            JwtBearerEvents events = null)
         {
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))
@@ -81,6 +82,11 @@ namespace Zora.Shared.Infrastructure
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
+
+                    if (events != null)
+                    {
+                        bearer.Events = events;
+                    }
                 });
 
             services.AddHttpContextAccessor();
@@ -102,8 +108,9 @@ namespace Zora.Shared.Infrastructure
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        //rmq.Host("localhost");
                         //todo
+                        //rmq.Host("localhost");
+
                         rmq.Host("rabbitmq", host =>
                         {
                             host.Username("rabbitmq");
@@ -123,17 +130,7 @@ namespace Zora.Shared.Infrastructure
                 })
                 .AddMassTransitHostedService();
 
-            services
-                .AddHangfire(config => config
-                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                    .UseSimpleAssemblyNameTypeSerializer()
-                    .UseRecommendedSerializerSettings()
-                    .UseSqlServerStorage(configuration.GetDefaultConnectionString()));
-
-            services.AddHangfireServer();
-
-            services.AddHostedService<MessagesHostedService>(); //todo
-
+           
             return services;
         }
 
@@ -157,5 +154,24 @@ namespace Zora.Shared.Infrastructure
         }
 
 
+
+        public static IServiceCollection AddHangfire(
+           this IServiceCollection services,
+           IConfiguration configuration)
+        {
+
+           services
+                .AddHangfire(config => config
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(configuration.GetDefaultConnectionString()));
+
+            services.AddHangfireServer();
+
+            services.AddHostedService<MessagesHostedService>();
+
+            return services;
+        }
     }
 }

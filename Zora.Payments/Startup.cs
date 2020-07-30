@@ -21,6 +21,7 @@ namespace Zora.Payments
                 .AddWebService<PaymentsDbContext>(this.Configuration)
                 .AddScoped<IPaymentService, PaymentService>()
                 .AddMessaging(this.Configuration);
+              
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app

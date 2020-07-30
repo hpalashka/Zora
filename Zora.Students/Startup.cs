@@ -23,6 +23,7 @@ namespace Zora.Students
                 .AddTransient<IDataSeeder, StudentsDataSeeder>()
                 .AddScoped<IStudentsService, StudentsService>()
                 .AddMessaging(this.Configuration);
+             
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app

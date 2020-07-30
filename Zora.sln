@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zotra.Watchdog", "Zora.Watc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Students", "Zora.Students\Zora.Students.csproj", "{7DEE9AB4-416A-46DE-BA14-2702A564B86A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Notifications", "Zora.Notifications\Zora.Notifications.csproj", "{99EB4C2B-2AEA-4D2B-99AC-6479311617F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{7DEE9AB4-416A-46DE-BA14-2702A564B86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DEE9AB4-416A-46DE-BA14-2702A564B86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DEE9AB4-416A-46DE-BA14-2702A564B86A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EB4C2B-2AEA-4D2B-99AC-6479311617F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EB4C2B-2AEA-4D2B-99AC-6479311617F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EB4C2B-2AEA-4D2B-99AC-6479311617F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EB4C2B-2AEA-4D2B-99AC-6479311617F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
