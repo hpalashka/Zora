@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Zora.Shared;
+using Zora.Shared.Domain.Common;
 using Zora.Web.Data;
 using Zora.Web.Data.Models;
 using Zora.Web.Helpers;

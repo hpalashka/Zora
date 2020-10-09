@@ -62,7 +62,7 @@ namespace Zora.Web.Controllers
                 async () =>
                 {
                     var result = await this.identityService
-                        .Register(new UserInputModel() { Email = model.Email, Password = model.Password, Name = model.Name });
+                        .Register(new UserInputModel() { Email = model.Email, Password = model.Password, Name = model.Name, PhoneNumber=model.PhoneNumber });
 
                     this.Response.Cookies.Append(
                         AuthenticationCookieName,
@@ -74,7 +74,7 @@ namespace Zora.Web.Controllers
                             MaxAge = TimeSpan.FromDays(1)
                         });
                 },
-                success: RedirectToAction("AddStudent", "Identity", new StudentBindingModel() { Email = model.Email, Name = model.Name }),
+                success: RedirectToAction("AddStudent", "Identity", new StudentBindingModel() { Email = model.Email, Name = model.Name, PhoneNumber = model.PhoneNumber }),
                 failure: RedirectToAction(nameof(HomeController.Index), "Home"));
 
         [AllowAnonymous]
@@ -82,7 +82,7 @@ namespace Zora.Web.Controllers
         {
             var result = await _students.AddStudent(model);
 
-            if (result == 0)
+            if (result == null)
             {
                 return NotFound();
             }

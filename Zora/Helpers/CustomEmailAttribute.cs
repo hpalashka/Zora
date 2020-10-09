@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Commons.Helpers
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Identity.Data.Models
 {

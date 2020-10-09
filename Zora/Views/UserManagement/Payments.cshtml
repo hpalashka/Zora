@@ -21,10 +21,10 @@
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DueDate)
+                @UITextConstants.CreatedDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
+                @UITextConstants.DueDate
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Paid)
@@ -35,27 +35,27 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DueDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paid)
-                </td>
-                <td>
-                    @Html.ActionLink(UITextConstants.Pay, "Pay", new { id = item.Id }) |
-                    @Html.ActionLink(UITextConstants.Delete, "DeletePayment", new { id = item.Id })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDue.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDue.End)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
+            </td>
+            <td>
+                @Html.ActionLink(UITextConstants.Pay, "Pay", new { id = item.Id }) |
+                @Html.ActionLink(UITextConstants.Delete, "DeletePayment", new { id = item.Id })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

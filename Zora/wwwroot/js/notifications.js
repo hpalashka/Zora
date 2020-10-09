@@ -10,7 +10,6 @@ var connection = new signalR.HubConnectionBuilder()
     })
     .build();
 
-
 connection
     .start()
     .then(() => console.log('Connection started'))

@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
     <ProjectReference Include="..\Zora.Shared\Zora.Shared.csproj" />
   </ItemGroup>
 

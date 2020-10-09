@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Payments.Domain.Models;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Payments.BindingModels
 {
-    public class PaymentsBindingModel
+    public class PaymentsBindingOutputModel
     {
         public int Id { get; set; }
 
@@ -21,8 +22,7 @@ namespace Zora.Web.Models.Payments.BindingModels
 
         [Required]
         [Display(Name = ValidationConstants.DueDate)]
-        public DateTime DueDate { get; set; }
-
+        public DateTimeRange PaymentDue { get; set; }
 
         public int StudentId { get; set; }
     }

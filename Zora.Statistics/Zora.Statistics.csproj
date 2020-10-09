@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zora.Shared\Zora.Shared.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Web\Zora.Shared.Web.csproj" />
   </ItemGroup>
 
 </Project>

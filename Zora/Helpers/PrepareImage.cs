@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Zora.Commons.Helpers;
 using System;
-using System.IO;
+using System.IO; 
 using System.Linq;
 using System.Threading.Tasks;
-using Zora.Shared;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Helpers
 {

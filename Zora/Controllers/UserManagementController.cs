@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
+using Zora.Payments.Domain.Models;
 using Zora.Web.Controllers;
 using Zora.Web.Models.Payments.BindingModels;
 using Zora.Web.Models.Payments.ViewModels;
-using Zora.Web.Models.Students.BindingModels;
 using Zora.Web.Services.OutstandingPayments;
 using Zora.Web.Services.Payments;
 using Zora.Web.Services.Statistics;
@@ -12,7 +13,6 @@ using Zora.Web.Services.Students;
 
 namespace Zora.Web.Areas.Admin.Controllers
 {
-    //todo move to new coltrollers
     public class UserManagementController : AdministrationController
     {
 
@@ -45,7 +45,6 @@ namespace Zora.Web.Areas.Admin.Controllers
             return View(await _students.Students());
         }
 
-
         public async Task<ActionResult> Payments(int id)
         {
             ViewData["User"] = id;
@@ -64,77 +63,63 @@ namespace Zora.Web.Areas.Admin.Controllers
 
         public ActionResult AddPayment(int id)
         {
-
             return View(new PaymentsBindingModel()
             {
                 StudentId = id
+
             });
-
-
         }
 
 
         [HttpPost]
         public async Task<ActionResult> AddPayment(string id, PaymentsBindingModel model)
         {
-            var result = await _payments.AddPayment(model);
+            DateTimeRange dateTimeRange = new DateTimeRange(DateTime.Now, model.DueDate);
 
-            if (result == 0)
+            PaymentsBindingOutputModel outputModel = new PaymentsBindingOutputModel()
+            {
+                Id = model.Id,
+                Amount = model.Amount,
+                StudentId = model.StudentId,
+                Title = model.Title,
+                PaymentDue = dateTimeRange
+            };
+
+            var result = await _payments.AddPayment(outputModel);
+
+            if (result == null)
             {
                 return NotFound();
             }
 
             return RedirectToAction(nameof(Index));
-
         }
 
 
         public async Task<IActionResult> DeletePayment(int id)
         {
-            var result = await _payments.DeletePayment(id);
+            await _payments.DeletePayment(id);
 
             return RedirectToAction(nameof(Index));
-
         }
 
 
         public async Task<ActionResult> Pay(int id)
         {
-
-            var result = await _payments.Pay(id);
+            await _payments.Pay(id);
 
             return RedirectToAction(nameof(Index));
-
-
         }
 
 
         public ActionResult AddStudent()
         {
-
             return View();
-
         }
-
-
-        //[HttpPost]
-        //public async Task<ActionResult> AddStudent(StudentBindingModel model)
-        //{
-        //    var result = await _students.AddStudent(model);
-
-        //    if (result == 0)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return RedirectToAction(nameof(Index));
-
-        //}
-
 
         public async Task<IActionResult> DeleteStudent(int id)
         {
-            var result = await _students.DeleteStudent(id);
+            await _students.DeleteStudent(id);
 
             return RedirectToAction(nameof(Index));
 

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Zora.Payments.Application\Zora.Payments.Application.csproj" />
+    <ProjectReference Include="..\Zora.Payments.Domain\Zora.Payments.Domain.csproj" />
+  </ItemGroup>
+</Project>

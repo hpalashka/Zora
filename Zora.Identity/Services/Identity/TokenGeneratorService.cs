@@ -9,7 +9,7 @@
     using Data.Models;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
-    using Zora.Shared;
+    using Zora.Shared.Application;
 
     public class TokenGeneratorService : ITokenGeneratorService
     {

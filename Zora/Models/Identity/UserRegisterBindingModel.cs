@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Identity.BindingModels
 {
@@ -17,6 +17,11 @@ namespace Zora.Web.Models.Identity.BindingModels
         [MaxLength(ValidationConstants.MaxEmailLength)]
         [Display(Name = ValidationConstants.Email)]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = ValidationConstants.RequiredField)]
+        [Phone]
+        [Display(Name = ValidationConstants.Phone)]
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = ValidationConstants.RequiredField)]
         [DataType(DataType.Password)]

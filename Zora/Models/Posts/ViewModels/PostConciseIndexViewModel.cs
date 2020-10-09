@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Posts.ViewModels
 {
@@ -11,6 +11,7 @@ namespace Zora.Web.Models.Posts.ViewModels
 
 
         [Display(Name = ValidationConstants.Title)]
+    
         public string Title { get; set; }
 
 

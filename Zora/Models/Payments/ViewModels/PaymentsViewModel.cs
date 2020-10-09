@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Payments.Domain.Models;
+using Zora.Shared.Application.Mapping;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Payments.ViewModels
 {
-    public class PaymentsViewModel
+    public class PaymentsViewModel : IMapFrom<Payment>
     {
         public int Id { get; set; }
 
@@ -17,16 +20,13 @@ namespace Zora.Web.Models.Payments.ViewModels
 
 
         [Display(Name = ValidationConstants.DueDate)]
-        public DateTime DueDate { get; set; }
-
-
-        [Display(Name = ValidationConstants.CreatedDate)]
-        public DateTime CreatedDate { get; set; }
+        public DateTimeRange PaymentDue { get; set; }
 
 
         [Display(Name = ValidationConstants.Paid)]
         public bool Paid { get; set; }
 
-        public string UserId { get; set; }
+        public int StudentId { get; set; }
+
     }
 }

@@ -5,8 +5,6 @@ using Zora.Statistics.Services.Statistics;
 
 namespace Zora.Statistics.Messages
 {
-
-
     public class PaymentConsumer : IConsumer<PaymentAddedMessage>
     {
         private readonly IStatisticsService statistics;

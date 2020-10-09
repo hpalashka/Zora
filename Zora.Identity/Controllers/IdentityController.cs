@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Zora.Identity.Models.Identity;
 using Zora.Identity.Services.Identity;
-using Zora.Shared.Controllers;
+using Zora.Shared.Web.Controllers;
 using Zora.Shared.Services.Identity;
 
 namespace Zora.Identity.Controllers
@@ -49,15 +49,6 @@ namespace Zora.Identity.Controllers
 
             return new UserOutputModel(result.Data.Token);
         }
-
-        [HttpPut]
-        [Authorize]
-        [Route(nameof(ChangePassword))]
-        public async Task<ActionResult> ChangePassword(ChangePasswordInputModel input)
-            => await this.identity.ChangePassword(this.currentUser.UserId, new ChangePasswordInputModel
-            {
-                CurrentPassword = input.CurrentPassword,
-                NewPassword = input.NewPassword
-            });
+     
     }
 }

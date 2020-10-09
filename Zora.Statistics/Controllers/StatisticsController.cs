@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Zora.Shared.Controllers;
+using Zora.Shared.Web.Controllers;
 using Zora.Statistics.Models.Statistics;
 using Zora.Statistics.Services.Statistics;
 

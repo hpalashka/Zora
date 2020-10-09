@@ -6,8 +6,8 @@
 
         public int TotalStudents { get; set; }
 
-        public double TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
-        public double TotalPaidAmount { get; set; }
+        public decimal TotalPaidAmount { get; set; }
     }
 }

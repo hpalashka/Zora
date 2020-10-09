@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Zora.OutstandingPayments.Services.Payments;
 using Zora.OutstandingPayments.Services.Students;
-using Zora.Shared.Controllers;
+using Zora.Shared.Web.Controllers;
 
 namespace Zora.OutstandingPayments.Controllers
 {

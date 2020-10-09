@@ -17,7 +17,7 @@ namespace Zora.Statistics.Services.Statistics
             : base(db) { }
 
 
-        public async Task IncreaseAmountTotal(double amount)
+        public async Task IncreaseAmountTotal(decimal amount)
         {
             var statistics = await this.All().SingleOrDefaultAsync();
 
@@ -26,7 +26,7 @@ namespace Zora.Statistics.Services.Statistics
             await this.Data.SaveChangesAsync();
         }
 
-        public async Task IncreasePaidAmountTotal(double amount)
+        public async Task IncreasePaidAmountTotal(decimal amount)
         {
             var statistics = await this.All().SingleOrDefaultAsync();
 

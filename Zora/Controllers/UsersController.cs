@@ -3,6 +3,7 @@ using Refit;
 using System.Threading.Tasks;
 using Zora.Shared.Infrastructure;
 using Zora.Shared.Services.Identity;
+using Zora.Web.Services.OutstandingPayments;
 using Zora.Web.Services.Payments;
 using Zora.Web.Services.Students;
 
@@ -13,12 +14,14 @@ namespace Zora.Web.Controllers
         private readonly IStudentsService _students;
         private readonly IPaymentsService _payments;
         private readonly ICurrentUserService _user;
+        private readonly IOutstandingPaymentsService _outStandingPayments;
 
-        public UsersController(IStudentsService students, IPaymentsService payments, ICurrentUserService user)
+        public UsersController(IStudentsService students, IPaymentsService payments, ICurrentUserService user, IOutstandingPaymentsService outStandingPayments)
         {
             _students = students;
             _payments = payments;
             _user = user;
+            _outStandingPayments = outStandingPayments;
         }
 
 
@@ -44,7 +47,7 @@ namespace Zora.Web.Controllers
         }
 
         public async Task<IActionResult> Payments(int id)
-        
+
         {
             return View(await _payments.Payments(id));
         }

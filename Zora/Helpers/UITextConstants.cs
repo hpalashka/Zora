@@ -97,7 +97,7 @@
         public const string DueDate = "Крайна дата";
         public const string Paid = "Платено";
         public const string OutStandingPayments = "Неплатени суми";
-
+        public const string CreatedDate = "Дата на въвеждане";
 
 
         //students

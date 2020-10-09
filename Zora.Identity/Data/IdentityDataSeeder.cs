@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Zora.Identity.Data.Models;
-using Zora.Shared;
+using Zora.Shared.Domain.Common;
 using Zora.Shared.Services;
 
 namespace Zora.Identity.Data

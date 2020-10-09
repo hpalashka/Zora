@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Zora.Shared;
+using Zora.Shared.Domain.Common;
 using Zora.Web.Data;
 using Zora.Web.Data.Models;
 using Zora.Web.Helpers;
@@ -16,7 +15,7 @@ using Zora.Web.Models.Teachers.ViewModels;
 
 namespace Zora.Web
 {
-   
+
     //[Authorize(Roles = Constants.AdministratorRoleName)]
     public class TeachersAdminController : Controller
     {

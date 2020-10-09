@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Identity
 {
@@ -16,5 +16,7 @@ namespace Zora.Web.Models.Identity
         public string Password { get; set; }
 
         public string Name { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }

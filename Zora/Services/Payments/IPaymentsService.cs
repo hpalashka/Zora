@@ -1,6 +1,7 @@
 ﻿using Refit;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Zora.Payments.Application.Commands.Create;
 using Zora.Web.Models.Payments.BindingModels;
 using Zora.Web.Models.Payments.ViewModels;
 
@@ -14,7 +15,7 @@ namespace Zora.Web.Services.Payments
 
 
         [Post("/Payments")]
-        Task<int> AddPayment(PaymentsBindingModel payment);
+        Task<CreatePaymentOutputModel> AddPayment(PaymentsBindingOutputModel payment);
 
 
         [Delete("/Payments/{id}")]

@@ -22,8 +22,14 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Payments\Zora.Payments.Application\Zora.Payments.Application.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Domain\Zora.Shared.Domain.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Shared\Zora.Shared.Web\Zora.Shared.Web.csproj" />
+    <ProjectReference Include="..\Students\Zora.Students.Application\Zora.Students.Application.csproj" />
+    <ProjectReference Include="..\Students\Zora.Students.Domain\Zora.Students.Domain.csproj" />
     <ProjectReference Include="..\Zora.EmailService\Zora.EmailService.csproj" />
-    <ProjectReference Include="..\Zora.Shared\Zora.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

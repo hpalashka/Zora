@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="DynamicFileNesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Web\Zora.Shared.Web.csproj" />
+    <ProjectReference Include="..\..\Zora.Identity\Zora.Identity.csproj" />
+    <ProjectReference Include="..\Zora.Students.Application\Zora.Students.Application.csproj" />
+    <ProjectReference Include="..\Zora.Students.Domain\Zora.Students.Domain.csproj" />
+    <ProjectReference Include="..\Zora.Students.Infrastructure\Zora.Students.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

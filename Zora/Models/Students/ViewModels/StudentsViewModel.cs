@@ -1,6 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Students.ViewModels
 {
@@ -15,5 +15,6 @@ namespace Zora.Web.Models.Students.ViewModels
 
         [Display(Name = ValidationConstants.Email)]
         public string Email { get; set; }
+
     }
 }

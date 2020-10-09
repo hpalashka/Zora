@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 using Zora.Web.Data.Models;
 
 namespace Zora.Web.Models.Images.BindingModels

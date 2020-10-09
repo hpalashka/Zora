@@ -7,9 +7,9 @@ namespace Zora.Statistics.Services.Statistics
     {
         Task<StatisticsViewModel> Totals();
 
-        Task IncreaseAmountTotal(double amount);
+        Task IncreaseAmountTotal(decimal amount);
 
-        Task IncreasePaidAmountTotal(double amount);
+        Task IncreasePaidAmountTotal(decimal amount);
 
         Task IncreaseStudentsCount();
     }

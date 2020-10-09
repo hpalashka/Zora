@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Zora.Commons.Helpers;
 using System.ComponentModel.DataAnnotations;
-using Zora.Shared.Data;
+using Zora.Shared.Domain.Common;
 
 namespace Zora.Web.Models.Contact.BindingModels
 {
