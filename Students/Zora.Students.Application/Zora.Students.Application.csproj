@@ -5,14 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="FluentValidation" Version="8.6.2" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.4" />
+    <ProjectCapability Include="DynamicFileNesting" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Shared.Application.csproj" />
     <ProjectReference Include="..\..\Shared\Zora.Shared.Domain\Zora.Shared.Domain.csproj" />
     <ProjectReference Include="..\Zora.Students.Domain\Zora.Students.Domain.csproj" />
   </ItemGroup>

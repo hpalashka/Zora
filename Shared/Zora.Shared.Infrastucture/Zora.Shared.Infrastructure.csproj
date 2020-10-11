@@ -5,13 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="3.1.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="3.1.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.1" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.11" />
+    <PackageReference Include="HangFire.Core" Version="1.7.11" />
+    <PackageReference Include="HangFire.SqlServer" Version="1.7.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="6.3.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="6.3.2" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
     <PackageReference Include="Scrutor" Version="3.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
-    <ProjectReference Include="..\Zora.Shared.Domain\Zora.Shared.Domain.csproj" />
+    <ProjectReference Include="..\Zora.Shared.Application\Zora.Shared.Application.csproj" />
   </ItemGroup>
 
 </Project>

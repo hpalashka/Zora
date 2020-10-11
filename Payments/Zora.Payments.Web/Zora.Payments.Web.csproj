@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
     <ProjectReference Include="..\..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\Zora.Shared.Web\Zora.Shared.Web.csproj" />
     <ProjectReference Include="..\Zora.Payments.Application\Zora.Payments.Application.csproj" />

@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\Zora.Shared\Zora.Shared.csproj" />
   </ItemGroup>
 
 </Project>

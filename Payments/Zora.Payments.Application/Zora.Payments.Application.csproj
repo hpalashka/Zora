@@ -1,11 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
+    <ProjectCapability Include="DynamicFileNesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Zora.Shared.Application\Zora.Shared.Application.csproj" />
     <ProjectReference Include="..\..\Shared\Zora.Shared.Domain\Zora.Shared.Domain.csproj" />
     <ProjectReference Include="..\Zora.Payments.Domain\Zora.Payments.Domain.csproj" />
   </ItemGroup>

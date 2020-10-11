@@ -5,17 +5,7 @@
     <UserSecretsId>35e99352-e40c-4b0a-b808-cd18bdf91cba</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-
-  <!--<ItemGroup>
-    <PackageReference Include="MassTransit.AspNetCore" Version="6.3.2" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="6.3.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-  </ItemGroup>-->
-
-
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
@@ -25,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Zora.Students.Application\Zora.Students.Application.csproj" />
-    <ProjectReference Include="..\Zora.Students.Domain\Zora.Students.Domain.csproj" />
     <ProjectReference Include="..\Zora.Students.Infrastructure\Zora.Students.Infrastructure.csproj" />
     <ProjectReference Include="..\Zora.Students.Web\Zora.Students.Web.csproj" />
   </ItemGroup>

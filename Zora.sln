@@ -21,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{146F09
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Shared.Domain", "Shared\Zora.Shared.Domain\Zora.Shared.Domain.csproj", "{5C8A2310-AA76-40DA-80C0-61186EDABE1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Shared.Application", "Shared\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj", "{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Shared.Web", "Shared\Zora.Shared.Web\Zora.Shared.Web.csproj", "{393B41B5-A3F6-4E1A-B147-1FB1241DC4A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Shared.Infrastructure", "Shared\Zora.Shared.Infrastucture\Zora.Shared.Infrastructure.csproj", "{BE0C1AF4-EF0C-4327-8968-FA4C5DFC7C4E}"
@@ -50,6 +48,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Students.Startup", "Students\Zora.Students.Startup\Zora.Students.Startup.csproj", "{C0B74254-D0A2-42B8-AE96-E421639E802D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Students.Web", "Students\Zora.Students.Web\Zora.Students.Web.csproj", "{BCD2FCBF-AD4E-4931-BDD5-94DA0102D7A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zora.Shared.Application", "Shared\Zora.Shared.Application\Zora.Shared.Application.csproj", "{C6642E25-C8C2-4F1B-AF71-3350EA09F40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,10 +89,6 @@ Global
 		{5C8A2310-AA76-40DA-80C0-61186EDABE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C8A2310-AA76-40DA-80C0-61186EDABE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C8A2310-AA76-40DA-80C0-61186EDABE1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{393B41B5-A3F6-4E1A-B147-1FB1241DC4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{393B41B5-A3F6-4E1A-B147-1FB1241DC4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393B41B5-A3F6-4E1A-B147-1FB1241DC4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -141,13 +137,16 @@ Global
 		{BCD2FCBF-AD4E-4931-BDD5-94DA0102D7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCD2FCBF-AD4E-4931-BDD5-94DA0102D7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCD2FCBF-AD4E-4931-BDD5-94DA0102D7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6642E25-C8C2-4F1B-AF71-3350EA09F40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6642E25-C8C2-4F1B-AF71-3350EA09F40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6642E25-C8C2-4F1B-AF71-3350EA09F40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6642E25-C8C2-4F1B-AF71-3350EA09F40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5C8A2310-AA76-40DA-80C0-61186EDABE1C} = {146F09AA-7FDB-49B3-B384-1C83D34A2A38}
-		{0B8FD8CD-FBE2-4A97-8057-3D5A9212D07A} = {146F09AA-7FDB-49B3-B384-1C83D34A2A38}
 		{393B41B5-A3F6-4E1A-B147-1FB1241DC4A6} = {146F09AA-7FDB-49B3-B384-1C83D34A2A38}
 		{BE0C1AF4-EF0C-4327-8968-FA4C5DFC7C4E} = {146F09AA-7FDB-49B3-B384-1C83D34A2A38}
 		{B6819DAF-DEBB-4411-93F7-B93FE96890F5} = {42E28CF5-7B0B-4E0C-A22C-7D7DA03BF3FF}
@@ -160,6 +159,7 @@ Global
 		{4EF34849-D297-4CF6-8C49-45A4E1337087} = {954046B1-E382-4C56-ACA8-2D26230CADF5}
 		{C0B74254-D0A2-42B8-AE96-E421639E802D} = {954046B1-E382-4C56-ACA8-2D26230CADF5}
 		{BCD2FCBF-AD4E-4931-BDD5-94DA0102D7A4} = {954046B1-E382-4C56-ACA8-2D26230CADF5}
+		{C6642E25-C8C2-4F1B-AF71-3350EA09F40D} = {146F09AA-7FDB-49B3-B384-1C83D34A2A38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA497F84-219B-4750-B774-FB1D6C7833BD}

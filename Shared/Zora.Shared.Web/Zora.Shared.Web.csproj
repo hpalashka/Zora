@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zora.Shared.Application\Zora.Application\Zora.Shared.Application.csproj" />
+    <ProjectReference Include="..\Zora.Shared.Application\Zora.Shared.Application.csproj" />
   </ItemGroup>
 
 </Project>
