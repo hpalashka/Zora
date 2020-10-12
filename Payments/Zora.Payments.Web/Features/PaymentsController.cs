@@ -108,17 +108,22 @@ namespace Zora.Payments.Web.Features
         [HttpDelete]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<bool>> DeletePayment([FromRoute] DeletePaymentCommand command)
+        public async Task<ActionResult<bool>> DeletePayment(int id)
         {
+            DeletePaymentCommand command = new DeletePaymentCommand();
+            command.Id = id;
             return await Send(command);
         }
-
 
         [HttpPut]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<bool>> Pay([FromRoute] PayPaymentCommand command)
+        public async Task<ActionResult<bool>> Pay(int id)
         {
+
+            PayPaymentCommand command = new PayPaymentCommand();
+            command.Id = id;
+
             Payment payment = await _paymentRepository.FindPayment(command.Id);//todo
 
             var messageData = new PaymentPaiddMessage

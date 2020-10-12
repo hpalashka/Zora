@@ -21,6 +21,10 @@ namespace Zora.Payments.Domain.Models
 
         public static class Data
         {
+
+            public const int Id = 1;
+            public const int InvalidId = 123456;
+
             public static IEnumerable<Payment> GetPayments(int count = 10)
                 => Enumerable
                     .Range(1, count)
@@ -33,7 +37,7 @@ namespace Zora.Payments.Domain.Models
                     .CustomInstantiator(f => new Payment(
                         $"Some Random Title for Payment {id}",
                         f.Random.Decimal(),
-                        f.Random.Int(),
+                        1,
                         A.Dummy<DateTimeRange>()))
                     .Generate()
                     .SetId(id);

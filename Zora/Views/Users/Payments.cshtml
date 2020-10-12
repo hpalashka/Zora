@@ -18,7 +18,10 @@
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PaymentDue)
+                @UITextConstants.CreatedDate
+            </th>
+            <th>
+                @UITextConstants.DueDate
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Paid)
@@ -37,7 +40,10 @@
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PaymentDue)
+                    @Html.DisplayFor(modelItem => item.PaymentDue.Start)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDue.End)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Paid)

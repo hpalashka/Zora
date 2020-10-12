@@ -4,8 +4,25 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>9681b4c7-0b41-4a68-8810-904bceb2cb08</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateProgramFile>false</GenerateProgramFile>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
+
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Compile Remove="**\*.Specs.cs" />
+    <Content Update="testsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' != 'Release'">
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="MyTested.AspNetCore.Mvc.Universe" Version="3.1.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
@@ -17,8 +34,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Zora.Shared.Domain\Zora.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Zora.Identity\Zora.Identity.csproj" />
     <ProjectReference Include="..\Zora.Payments.Infrastructure\Zora.Payments.Infrastructure.csproj" />
     <ProjectReference Include="..\Zora.Payments.Web\Zora.Payments.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="testsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

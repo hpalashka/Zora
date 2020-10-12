@@ -9,9 +9,8 @@ using Zora.Shared.Infrastructure;
 using Zora.Payments.Web;
 using Zora.Payments.Web.Services;
 
-namespace Zora.Payments
+namespace Zora.Payments.Startups
 {
-
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -28,7 +27,6 @@ namespace Zora.Payments
                 .AddWebComponents()
                 .AddScoped<IPaymentService, PaymentService>()
                 .AddMessaging(this.Configuration);
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app
