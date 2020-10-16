@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Zora.Shared.Application.Configuration;
 using MediatR;
 using System.Reflection;
-using AutoMapper;
 
 namespace Zora.Payments.Application
 {
@@ -13,7 +12,6 @@ namespace Zora.Payments.Application
             this IServiceCollection services,
             IConfiguration configuration)
             => services.AddCommonApplication(configuration)
-            .AddMediatR(Assembly.GetExecutingAssembly())
-            .AddAutoMapper(Assembly.GetExecutingAssembly());
+            .AddMediatR(Assembly.GetExecutingAssembly());
     }
 }

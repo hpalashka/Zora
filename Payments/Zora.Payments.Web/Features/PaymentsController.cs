@@ -7,6 +7,7 @@ using Zora.Payments.Application.Commands.Create;
 using Zora.Payments.Application.Commands.Delete;
 using Zora.Payments.Application.Queries.Payments;
 using Zora.Payments.Application.Queries.PaymentsForUser;
+using Zora.Payments.Application.Quieries.Common;
 using Zora.Payments.Domain.Models;
 using Zora.Payments.Domain.Repositories;
 using Zora.Payments.Web.Services;
@@ -58,7 +59,7 @@ namespace Zora.Payments.Web.Features
         [HttpGet]
         [Route(Id)]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Payment>>> Payments(int id)
+        public async Task<ActionResult<IList<PaymentsViewModel>>> Payments(int id)
         {
             PaymentsForUserQuery command = new PaymentsForUserQuery();
             command.Id = id;
@@ -67,7 +68,7 @@ namespace Zora.Payments.Web.Features
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Payment>>> Payments()
+        public async Task<ActionResult<IList<PaymentsViewModel>>> Payments()
         {
             PaymentsQuery command = new PaymentsQuery();
             return await Send(command);

@@ -11,7 +11,7 @@ namespace Zora.Web.Services.Payments
     {
 
         [Get("/Payments/{id}")]
-        Task<IEnumerable<PaymentsViewModel>> Payments(int id);
+        Task<IList<PaymentsViewModel>> Payments(int id);
 
 
         [Post("/Payments")]

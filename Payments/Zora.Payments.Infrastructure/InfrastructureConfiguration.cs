@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Zora.Payments.Infrastructure;
@@ -18,6 +19,7 @@ namespace Zora.Shared.Infrastructure
            => services
                .AddDatabase(configuration)
                .AddRepositories()
+              .AddAutoMapper(typeof(AutoMapperConfiguration))
               .AddTransient<IEventDispatcher, EventDispatcher>();
 
 

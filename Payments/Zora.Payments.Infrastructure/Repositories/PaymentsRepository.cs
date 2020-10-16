@@ -45,19 +45,18 @@ namespace Zora.Payments.Infrastructure.Repositories
         }
 
 
-        public async Task<IEnumerable<Payment>> Payments(int id, CancellationToken cancellationToken = default)
+        public async Task<IList<PaymentsViewModel>> Payments(int id, CancellationToken cancellationToken = default)
         {
-            return await //this.mapper.ProjectTo<PaymentsViewModel>( todo
-               this.All()
-                   .Where(p => p.StudentId == id)
-                   .OrderByDescending(p => p.PaymentDue.End).ToListAsync(cancellationToken);
+            return await this.mapper
+                    .ProjectTo<PaymentsViewModel>(this.All().Where(p => p.StudentId == id))
+                    .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Payment>> Payments(CancellationToken cancellationToken = default)
+        public async Task<IList<PaymentsViewModel>> Payments(CancellationToken cancellationToken = default)
         {
-            return await //this.mapper.ProjectTo<PaymentsViewModel>( todo
-               this.All()
-                    .OrderByDescending(p => p.PaymentDue.End).ToListAsync(cancellationToken);
+            return await this.mapper
+                    .ProjectTo<PaymentsViewModel>(this.All())
+                    .ToListAsync(cancellationToken);
         }
 
 

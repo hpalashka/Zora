@@ -20,7 +20,7 @@ namespace Zora.Web.Models.Payments.ViewModels
 
 
         [Display(Name = ValidationConstants.DueDate)]
-        public DateTimeRange PaymentDue { get; set; }
+        public DateTime PaymentDue { get; set; }
 
 
         [Display(Name = ValidationConstants.Paid)]

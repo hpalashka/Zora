@@ -8,11 +8,11 @@ using Zora.Payments.Domain.Models;
 
 namespace Zora.Payments.Application.Queries.PaymentsForUser
 {
-    public class PaymentsForUserQuery : IRequest<IEnumerable<Payment>>
+    public class PaymentsForUserQuery : IRequest<IList<PaymentsViewModel>>
     {
         public int Id { get; set; }
 
-        public class PaymentsForUserQueryHandler : IRequestHandler<PaymentsForUserQuery, IEnumerable<Payment>>
+        public class PaymentsForUserQueryHandler : IRequestHandler<PaymentsForUserQuery, IList<PaymentsViewModel>>
         {
             private readonly IPaymentQueryRepository _paymentRepository;
 
@@ -21,7 +21,7 @@ namespace Zora.Payments.Application.Queries.PaymentsForUser
                 _paymentRepository = paymentRepository;
             }
 
-            public async Task<IEnumerable<Payment>> Handle(PaymentsForUserQuery request, CancellationToken cancellationToken)
+            public async Task<IList<PaymentsViewModel>> Handle(PaymentsForUserQuery request, CancellationToken cancellationToken)
             {
                 return await _paymentRepository.Payments(request.Id, cancellationToken);
 

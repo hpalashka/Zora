@@ -21,9 +21,6 @@
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th>
-                @UITextConstants.CreatedDate
-            </th>
-            <th>
                 @UITextConstants.DueDate
             </th>
             <th>
@@ -35,27 +32,24 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentDue.Start)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentDue.End)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paid)
-            </td>
-            <td>
-                @Html.ActionLink(UITextConstants.Pay, "Pay", new { id = item.Id }) |
-                @Html.ActionLink(UITextConstants.Delete, "DeletePayment", new { id = item.Id })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paid)
+                </td>
+                <td>
+                    @Html.ActionLink(UITextConstants.Pay, "Pay", new { id = item.Id }) |
+                    @Html.ActionLink(UITextConstants.Delete, "DeletePayment", new { id = item.Id })
+                </td>
+            </tr>
         }
     </tbody>
 </table>
