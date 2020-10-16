@@ -13,7 +13,6 @@ namespace Zora.Students.Application
             this IServiceCollection services,
             IConfiguration configuration)
             => services.AddCommonApplication(configuration)
-                 .AddMediatR(Assembly.GetExecutingAssembly())
-                 .AddAutoMapper(Assembly.GetExecutingAssembly());
+                 .AddMediatR(Assembly.GetExecutingAssembly());
     }
 }

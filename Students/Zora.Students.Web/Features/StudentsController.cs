@@ -57,7 +57,7 @@ namespace Zora.Students.Web.Features
         //todo add code for edit student
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> Students()//todo StudentsViewModel
+        public async Task<ActionResult<IList<StudentsViewModel>>> Students()//todo StudentsViewModel
         {
             StudentsQuery command = new StudentsQuery();
             return await Send(command);
@@ -77,7 +77,7 @@ namespace Zora.Students.Web.Features
         [HttpGet]
         [Route(Id)]
         [AllowAnonymous]
-        public async Task<ActionResult<Student>> Student(string Id)
+        public async Task<ActionResult<StudentsViewModel>> Student(string Id)
         {
             StudentByEmailQuery command = new StudentByEmailQuery();
             command.Email = Id;

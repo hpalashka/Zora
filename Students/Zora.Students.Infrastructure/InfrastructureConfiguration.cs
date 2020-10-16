@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Zora.Shared.Application.Contracts;
@@ -19,7 +20,8 @@ namespace Zora.Shared.Students.Infrastructure
           => services
               .AddDatabase(configuration)
               .AddRepositories()
-             .AddTransient<IEventDispatcher, EventDispatcher>();
+              .AddAutoMapper(typeof(AutoMapperConfiguration))
+              .AddTransient<IEventDispatcher, EventDispatcher>();
              
 
         private static IServiceCollection AddDatabase(

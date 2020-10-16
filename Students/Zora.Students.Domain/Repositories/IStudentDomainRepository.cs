@@ -8,10 +8,6 @@ namespace Zora.Students.Domain.Repositories
 
     public interface IStudentDomainRepository : IDomainRepository<Student>
     {
-        Task<Student> FindStudent(int id, CancellationToken cancellationToken = default);
-
-        Task<Student> FindStudent(string email, CancellationToken cancellationToken = default);
-
         Task<bool> DeleteStudent(int id, CancellationToken cancellationToken = default);
 
     }

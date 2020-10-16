@@ -10,7 +10,11 @@ namespace Zora.Students.Application.Repositories
 
     public interface IStudentQueryRepository : IQueryRepository<Student>
     {
-        Task<IEnumerable<Student>> Students(CancellationToken cancellationToken = default);
+        Task<StudentsViewModel> FindStudent(int id, CancellationToken cancellationToken = default);
+
+        Task<StudentsViewModel> FindStudent(string email, CancellationToken cancellationToken = default);
+
+        Task<IList<StudentsViewModel>> Students(CancellationToken cancellationToken = default);
 
     }
 }

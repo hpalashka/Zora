@@ -1,25 +1,25 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Zora.Students.Application.Queries.Common;
 using Zora.Students.Application.Repositories;
 using Zora.Students.Domain.Models;
-using Zora.Students.Domain.Repositories;
 
 namespace Zora.Students.Application.Queries.StudentByEmail
 {
-    public class StudentByEmailQuery : IRequest<Student>
+    public class StudentByEmailQuery : IRequest<StudentsViewModel>
     {
         public string Email { get; set; }
-        public class StudentByEmailQueryHandler : IRequestHandler<StudentByEmailQuery, Student>
+        public class StudentByEmailQueryHandler : IRequestHandler<StudentByEmailQuery, StudentsViewModel>
         {
-            private readonly IStudentDomainRepository _studentRepository;
+            private readonly IStudentQueryRepository _studentRepository;
 
-            public StudentByEmailQueryHandler(IStudentDomainRepository studentRepository)
+            public StudentByEmailQueryHandler(IStudentQueryRepository studentRepository)
             {
                 _studentRepository = studentRepository;
             }
 
-            public async Task<Student> Handle(StudentByEmailQuery request, CancellationToken cancellationToken)
+            public async Task<StudentsViewModel> Handle(StudentByEmailQuery request, CancellationToken cancellationToken)
             {
                 return await _studentRepository.FindStudent(request.Email, cancellationToken);
             }

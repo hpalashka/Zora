@@ -23,14 +23,18 @@ namespace Zora.Students.Infrastructure.Repositories
             => this.mapper = mapper;
 
 
-        public async Task<Student> FindStudent(int id, CancellationToken cancellationToken = default)
+        public async Task<StudentsViewModel> FindStudent(int id, CancellationToken cancellationToken = default)
         {
-            return await this.All().FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
+            return await this.mapper
+               .ProjectTo<StudentsViewModel>(this.All())
+               .FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
         }
 
-        public async Task<Student> FindStudent(string email, CancellationToken cancellationToken = default)
+        public async Task<StudentsViewModel> FindStudent(string email, CancellationToken cancellationToken = default)
         {
-            return await this.All().FirstOrDefaultAsync(s => s.Email == email, cancellationToken);
+            return await this.mapper
+                .ProjectTo<StudentsViewModel>(this.All())
+                .FirstOrDefaultAsync(s => s.Email == email, cancellationToken);
         }
 
         public async Task<bool> DeleteStudent(int id, CancellationToken cancellationToken = default)
@@ -49,13 +53,11 @@ namespace Zora.Students.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<IEnumerable<Student>> Students(CancellationToken cancellationToken = default)
+        public async Task<IList<StudentsViewModel>> Students(CancellationToken cancellationToken = default)
         {
-            var allStrudents = //todo this.mapper.ProjectTo<StudentsViewModel>(
-              await this.All()
-                .OrderBy(p => p.Name)//)
-                .ToListAsync(cancellationToken);
-            return allStrudents;
+            return await this.mapper
+                  .ProjectTo<StudentsViewModel>(this.All())
+                  .ToListAsync(cancellationToken);
         }
 
     }
