@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyTested.AspNetCore.Mvc;
+//using MyTested.AspNetCore.Mvc;
 using Zora.Identity.Data.Models;
 using Zora.Identity.Services.Identity;
 using Zora.Payments.Application.Repositories;
@@ -24,8 +24,8 @@ namespace Zora.Payments.Startups
 
             ValidateServices(services);
 
-            //services.ReplaceTransient<UserManager<User>>(_ => IdentityFakes.FakeUserManager);
-            //services.ReplaceTransient<ITokenGeneratorService>(_ => JwtTokenGeneratorFakes.FakeJwtTokenGenerator);
+           // services.ReplaceTransient<UserManager<User>>(_ => IdentityFakes.FakeUserManager);
+           // services.ReplaceTransient<ITokenGeneratorService>(_ => JwtTokenGeneratorFakes.FakeJwtTokenGenerator);
         }
 
         private static void ValidateServices(IServiceCollection services)
