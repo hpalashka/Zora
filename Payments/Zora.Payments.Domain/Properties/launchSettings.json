@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Zora.Payments.Domain": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
