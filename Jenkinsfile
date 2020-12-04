@@ -18,13 +18,6 @@ pipeline {
         """)
       }
     }
-    stage('pre-build') {
-        steps {
-          powershell(script: 'dotnet --info')  
-          powershell(script: 'dotnet nuget locals all --list')  
-          powershell(script: 'dotnet clean')  
-          }
-        }
     stage('Docker Build') {
       steps {
         powershell(script: 'docker-compose build')   
