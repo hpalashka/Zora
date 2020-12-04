@@ -1,4 +1,4 @@
-﻿using FakeItEasy;
+﻿//using FakeItEasy;
 using FluentAssertions;
 using System;
 using Xunit;
@@ -8,18 +8,18 @@ namespace Zora.Payments.Domain.Models
 {
    public class DealerSpecs
     {
-        [Fact]
-        public void PaymentPaidShouldMutateIsAvailable()
-        {
-            // Arrange
-            var payment = A.Dummy<Payment>();
+        //[Fact]
+        //public void PaymentPaidShouldMutateIsAvailable()
+        //{
+        //    // Arrange
+        //    var payment = A.Dummy<Payment>();
 
-            // Act
-            payment.PayPayment();
+        //    // Act
+        //    payment.PayPayment();
 
-            // Assert
-            payment.Paid.Should().BeTrue();
-        }
+        //    // Assert
+        //    payment.Paid.Should().BeTrue();
+        //}
 
         [Fact]
         public void ValidPaymentShouldNotThrowException()
