@@ -84,12 +84,7 @@ pipeline {
         }
       }
     } 
-    stage('Deploy Development') {
-      when { branch 'main' }
-      steps {
-        //todo
-        }
-      }
+   
     }
   }
 }
