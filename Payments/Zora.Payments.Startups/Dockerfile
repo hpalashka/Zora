@@ -7,17 +7,26 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Zora.Payments/Zora.Payments.csproj", "Zora.Payments/"]
-COPY ["Zora.Shared/Zora.Shared.csproj", "Zora.Shared/"]
-RUN dotnet restore "Zora.Payments/Zora.Payments.csproj"
+COPY ["Payments/Zora.Payments.Startups/Zora.Payments.Startups.csproj", "Payments/Zora.Payments.Startups/"]
+COPY ["Payments/Zora.Payments.Infrastructure/Zora.Payments.Infrastructure.csproj", "Payments/Zora.Payments.Infrastructure/"]
+COPY ["Payments/Zora.Payments.Domain/Zora.Payments.Domain.csproj", "Payments/Zora.Payments.Domain/"]
+COPY ["Shared/Zora.Shared.Domain/Zora.Shared.Domain.csproj", "Shared/Zora.Shared.Domain/"]
+COPY ["Payments/Zora.Payments.Application/Zora.Payments.Application.csproj", "Payments/Zora.Payments.Application/"]
+COPY ["Shared/Zora.Shared.Application/Zora.Shared.Application.csproj", "Shared/Zora.Shared.Application/"]
+COPY ["Students/Zora.Students.Domain/Zora.Students.Domain.csproj", "Students/Zora.Students.Domain/"]
+COPY ["Shared/Zora.Shared.Infrastucture/Zora.Shared.Infrastructure.csproj", "Shared/Zora.Shared.Infrastucture/"]
+COPY ["Zora.Identity/Zora.Identity.csproj", "Zora.Identity/"]
+COPY ["Shared/Zora.Shared.Web/Zora.Shared.Web.csproj", "Shared/Zora.Shared.Web/"]
+COPY ["Payments/Zora.Payments.Web/Zora.Payments.Web.csproj", "Payments/Zora.Payments.Web/"]
+RUN dotnet restore "Payments/Zora.Payments.Startups/Zora.Payments.Startups.csproj"
 COPY . .
-WORKDIR "/src/Zora.Payments"
-RUN dotnet build "Zora.Payments.csproj" -c Release -o /app/build
+WORKDIR "/src/Payments/Zora.Payments.Startups"
+RUN dotnet build "Zora.Payments.Startups.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Zora.Payments.csproj" -c Release -o /app/publish
+RUN dotnet publish "Zora.Payments.Startups.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Zora.Payments.dll"]
+ENTRYPOINT ["dotnet", "Zora.Payments.Startups.dll"]

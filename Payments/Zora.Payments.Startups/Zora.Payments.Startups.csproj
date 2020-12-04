@@ -6,6 +6,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <GenerateProgramFile>false</GenerateProgramFile>
     <OutputType>Exe</OutputType>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
 

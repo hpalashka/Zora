@@ -7,21 +7,20 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Zora.Identity/Zora.Identity.csproj", "Zora.Identity/"]
-COPY ["Shared/Zora.Shared.Domain/Zora.Shared.Domain.csproj", "Shared/Zora.Shared.Domain/"]
-COPY ["Shared/Zora.Shared.Web/Zora.Shared.Web.csproj", "Shared/Zora.Shared.Web/"]
+COPY ["Zora.Notifications/Zora.Notifications.csproj", "Zora.Notifications/"]
+COPY ["Shared/Zora.Shared.Infrastucture/Zora.Shared.Infrastructure.csproj", "Shared/Zora.Shared.Infrastucture/"]
 COPY ["Shared/Zora.Shared.Application/Zora.Shared.Application.csproj", "Shared/Zora.Shared.Application/"]
 COPY ["Students/Zora.Students.Domain/Zora.Students.Domain.csproj", "Students/Zora.Students.Domain/"]
-COPY ["Shared/Zora.Shared.Infrastucture/Zora.Shared.Infrastructure.csproj", "Shared/Zora.Shared.Infrastucture/"]
-RUN dotnet restore "Zora.Identity/Zora.Identity.csproj"
+COPY ["Shared/Zora.Shared.Domain/Zora.Shared.Domain.csproj", "Shared/Zora.Shared.Domain/"]
+RUN dotnet restore "Zora.Notifications/Zora.Notifications.csproj"
 COPY . .
-WORKDIR "/src/Zora.Identity"
-RUN dotnet build "Zora.Identity.csproj" -c Release -o /app/build
+WORKDIR "/src/Zora.Notifications"
+RUN dotnet build "Zora.Notifications.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Zora.Identity.csproj" -c Release -o /app/publish
+RUN dotnet publish "Zora.Notifications.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Zora.Identity.dll"]
+ENTRYPOINT ["dotnet", "Zora.Notifications.dll"]

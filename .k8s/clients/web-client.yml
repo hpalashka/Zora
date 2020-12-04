@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-service-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5001
+    targetPort: 80
+  selector:
+    web-service: web
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-service
+spec:
+  selector:
+    matchLabels:
+      web-service: web
+  template:
+    metadata:
+      labels:
+        web-service: web
+        system: service
+    spec:
+      affinity:
+          podAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  web-service: web
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: web-service
+        image: hpalashka/zora-web-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        env:
+        - name: ApplicationSettings__Secret
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: security-token-secret
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: web-service-connection-string
+        - name: ServiceEndpoints__Identity
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-identity-endpoint
+        - name: ServiceEndpoints__Students
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-students-endpoint
+        - name: ServiceEndpoints__Payments
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-payments-endpoint
+        - name: ServiceEndpoints__Statistics
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-statistics-endpoint
+        - name: ServiceEndpoints__OutstandingPayments
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-statistics-endpoint
+        volumeMounts:
+        - name: web-service-data
+          mountPath: /root/.aspnet/DataProtection-Keys
+      volumes:
+      - name: web-service-data
+        persistentVolumeClaim:
+          claimName: web-service-data

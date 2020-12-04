@@ -24,8 +24,8 @@ namespace Zora.Payments.Startups
 
             ValidateServices(services);
 
-            services.ReplaceTransient<UserManager<User>>(_ => IdentityFakes.FakeUserManager);
-            services.ReplaceTransient<ITokenGeneratorService>(_ => JwtTokenGeneratorFakes.FakeJwtTokenGenerator);
+            //services.ReplaceTransient<UserManager<User>>(_ => IdentityFakes.FakeUserManager);
+            //services.ReplaceTransient<ITokenGeneratorService>(_ => JwtTokenGeneratorFakes.FakeJwtTokenGenerator);
         }
 
         private static void ValidateServices(IServiceCollection services)

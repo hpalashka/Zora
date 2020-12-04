@@ -7,17 +7,24 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Zora.Students/Zora.Students.csproj", "Zora.Students/"]
-COPY ["Zora.Shared/Zora.Shared.csproj", "Zora.Shared/"]
-RUN dotnet restore "Zora.Students/Zora.Students.csproj"
+COPY ["Students/Zora.Students.Startup/Zora.Students.Startup.csproj", "Students/Zora.Students.Startup/"]
+COPY ["Students/Zora.Students.Application/Zora.Students.Application.csproj", "Students/Zora.Students.Application/"]
+COPY ["Shared/Zora.Shared.Application/Zora.Shared.Application.csproj", "Shared/Zora.Shared.Application/"]
+COPY ["Students/Zora.Students.Domain/Zora.Students.Domain.csproj", "Students/Zora.Students.Domain/"]
+COPY ["Shared/Zora.Shared.Domain/Zora.Shared.Domain.csproj", "Shared/Zora.Shared.Domain/"]
+COPY ["Students/Zora.Students.Web/Zora.Students.Web.csproj", "Students/Zora.Students.Web/"]
+COPY ["Shared/Zora.Shared.Web/Zora.Shared.Web.csproj", "Shared/Zora.Shared.Web/"]
+COPY ["Students/Zora.Students.Infrastructure/Zora.Students.Infrastructure.csproj", "Students/Zora.Students.Infrastructure/"]
+COPY ["Shared/Zora.Shared.Infrastucture/Zora.Shared.Infrastructure.csproj", "Shared/Zora.Shared.Infrastucture/"]
+RUN dotnet restore "Students/Zora.Students.Startup/Zora.Students.Startup.csproj"
 COPY . .
-WORKDIR "/src/Zora.Students"
-RUN dotnet build "Zora.Students.csproj" -c Release -o /app/build
+WORKDIR "/src/Students/Zora.Students.Startup"
+RUN dotnet build "Zora.Students.Startup.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Zora.Students.csproj" -c Release -o /app/publish
+RUN dotnet publish "Zora.Students.Startup.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Zora.Students.dll"]
+ENTRYPOINT ["dotnet", "Zora.Students.Startup.dll"]

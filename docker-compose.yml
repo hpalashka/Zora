@@ -26,22 +26,25 @@ services:
             - RABBITMQ_ERLANG_COOKIE=Rand0mR4bbitMqCo0k1e
             - RABBITMQ_DEFAULT_USER=rabbitmq
             - RABBITMQ_DEFAULT_PASS=rabbitmq
+        volumes:
+            - rabbitmq:/var/lib/rabbitmq/mnesia
         networks: 
             - zora-network
 
     identity:
         container_name: identity
+        image: hpalashka/zora-identity-service
         build:
             context: ./
             dockerfile: ./Zora.Identity/Dockerfile
         ports: 
             - "5005:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ZoraIdentityDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
         restart: on-failure
         volumes:
-            - ./.aspnet/identity/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network
         depends_on:
@@ -49,12 +52,13 @@ services:
             
     web:
         container_name: web
+        image: hpalashka/zora-web-service
         build:
             context: ./
             dockerfile: ./Zora/Dockerfile
         ports: 
             - "5001:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ZoraDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - ServiceEndpoints__Identity=http://identity
@@ -64,85 +68,153 @@ services:
             - ServiceEndpoints__Statistics=http://statistics
         restart: on-failure
         volumes:
-            - ./.aspnet/web/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network
         depends_on:
             - data
+            - messages
+            - identity
+            - students
+            - payments
+            - outstandingpayments
+            - statistics
 
     students:
         container_name: students
+        image: hpalashka/zora-student-service
         build:
             context: ./
-            dockerfile: ./Zora.Students/Dockerfile
+            dockerfile: Students/Zora.Students.Startup/Dockerfile
         ports: 
             - "5003:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ZoraStudentsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
         restart: on-failure
         volumes:
-            - ./.aspnet/students/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network
         depends_on:
             - data
-
+            - messages
+        
     payments:
         container_name: payments
+        image: hpalashka/zora-payments-service
         build:
             context: ./
-            dockerfile: ./Zora.Payments/Dockerfile
+            dockerfile: Payments/Zora.Payments.Startups/Dockerfile
         ports: 
             - "5011:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ZoraPaymentsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
         restart: on-failure
         volumes:
-            - ./.aspnet/payments/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network
         depends_on:
             - data
+            - messages
 
     outstandingpayments:
         container_name: outstandingpayments
+        image: hpalashka/zora-outstandingpayments-service
         build:
             context: ./
-            dockerfile: ./Zora.OutstandingPayments/Dockerfile
+            dockerfile: Zora.OutstandingPayments/Dockerfile
         ports: 
             - "5009:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ServiceEndpoints__Students=http://students
             - ServiceEndpoints__Payments=http://payments
         restart: on-failure
         volumes:
-            - ./.aspnet/outstandingpayments/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network     
 
     statistics:
         container_name: statistics
+        image: hpalashka/zora-statistics-service
         build:
             context: ./
-            dockerfile: ./Zora.Statistics/Dockerfile
+            dockerfile: Zora.Statistics/Dockerfile
         ports: 
             - "5013:80"
-        env_file: Zora.Shared/Common.env
+        env_file: Shared/Zora.Shared.Domain/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ZoraStatisticsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
         restart: on-failure
         volumes:
-            - ./.aspnet/statistics/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks: 
             - zora-network
         depends_on:
             - data
+            - messages
+        
+    notifications:
+        container_name: notifications
+        image: hpalashka/zora-notifications-service
+        build:
+            context: ./
+            dockerfile: ./Zora.Notifications/Dockerfile
+        ports: 
+            - "5017:80"
+        env_file: Shared/Zora.Shared.Domain/Common.env
+        environment:
+            - NotificationSettings__AllowedOrigins=http://localhost
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmqPassword12!
+        restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
+        networks: 
+            - zora-network
+        depends_on:
+            - messages
+
+    watchdog:
+        container_name: watchdog
+        image: hpalashka/zora-watchdog-service
+        build:
+            context: ./
+            dockerfile: ./Zora.Watchdog/Dockerfile
+        ports: 
+            - "5015:80"
+        environment:
+            - HealthChecks-UI__HealthChecks__0__Name=Identity
+            - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
+            - HealthChecks-UI__HealthChecks__1__Name=Students
+            - HealthChecks-UI__HealthChecks__1__Uri=http://students/health
+            - HealthChecks-UI__HealthChecks__2__Name=Payments
+            - HealthChecks-UI__HealthChecks__2__Uri=http://payments/health
+            - HealthChecks-UI__HealthChecks__3__Name=Notifications
+            - HealthChecks-UI__HealthChecks__3__Uri=http://notifications/health
+            - HealthChecks-UI__HealthChecks__4__Name=Web
+            - HealthChecks-UI__HealthChecks__4__Uri=http://web/health
+            - HealthChecks-UI__HealthChecks__5__Name=Statistics
+            - HealthChecks-UI__HealthChecks__5__Uri=http://statistics/health
+        restart: on-failure
+        networks: 
+            - zora-network
+        depends_on:
+            - identity
+            - students
+            - payments
+            - outstandingpayments
+            - statistics
 
 networks:
     zora-network:
 
 volumes:
     sqldata:
+    rabbitmq:
+    data-protection:

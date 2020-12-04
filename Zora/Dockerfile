@@ -8,8 +8,15 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Zora/Zora.Web.csproj", "Zora/"]
+COPY ["Students/Zora.Students.Application/Zora.Students.Application.csproj", "Students/Zora.Students.Application/"]
+COPY ["Shared/Zora.Shared.Application/Zora.Shared.Application.csproj", "Shared/Zora.Shared.Application/"]
+COPY ["Students/Zora.Students.Domain/Zora.Students.Domain.csproj", "Students/Zora.Students.Domain/"]
+COPY ["Shared/Zora.Shared.Domain/Zora.Shared.Domain.csproj", "Shared/Zora.Shared.Domain/"]
+COPY ["Shared/Zora.Shared.Web/Zora.Shared.Web.csproj", "Shared/Zora.Shared.Web/"]
+COPY ["Payments/Zora.Payments.Application/Zora.Payments.Application.csproj", "Payments/Zora.Payments.Application/"]
+COPY ["Payments/Zora.Payments.Domain/Zora.Payments.Domain.csproj", "Payments/Zora.Payments.Domain/"]
 COPY ["Zora.EmailService/Zora.EmailService.csproj", "Zora.EmailService/"]
-COPY ["Zora.Shared/Zora.Shared.csproj", "Zora.Shared/"]
+COPY ["Shared/Zora.Shared.Infrastucture/Zora.Shared.Infrastructure.csproj", "Shared/Zora.Shared.Infrastucture/"]
 RUN dotnet restore "Zora/Zora.Web.csproj"
 COPY . .
 WORKDIR "/src/Zora"

@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Zora.Students.Application\Zora.Students.Application.csproj" />
     <ProjectReference Include="..\Zora.Students.Domain\Zora.Students.Domain.csproj" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>

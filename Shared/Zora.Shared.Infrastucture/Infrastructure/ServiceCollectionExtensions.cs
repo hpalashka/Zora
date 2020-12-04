@@ -109,14 +109,14 @@ namespace Zora.Shared.Infrastructure
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        rmq.Host("localhost");
+                        // rmq.Host("localhost");
 
                         //for docker
-                        //rmq.Host("rabbitmq", host =>
-                        //{
-                        //    host.Username("rabbitmq");
-                        //    host.Password("rabbitmq");
-                        //});
+                        rmq.Host("rabbitmq", host =>
+                        {
+                            host.Username("rabbitmq");
+                            host.Password("rabbitmq");
+                        });
 
                         rmq.UseHealthCheck(context);
 
@@ -145,11 +145,11 @@ namespace Zora.Shared.Infrastructure
             healthChecks
                 .AddSqlServer(configuration.GetDefaultConnectionString());
 
-            healthChecks
-               .AddRabbitMQ(rabbitConnectionString: "amqp://localhost");
-
             //healthChecks
-            //    .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");
+            //   .AddRabbitMQ(rabbitConnectionString: "amqp://localhost");
+
+            healthChecks
+                .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");
 
             return services;
         }
