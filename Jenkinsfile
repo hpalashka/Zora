@@ -21,7 +21,6 @@ pipeline {
     stage('Docker Build') {
       steps {
         powershell(script: 'docker-compose build')   
-        // powershell(script: 'docker build -t ivaylokenov/carrentalsystem-user-client-development --build-arg configuration=development ./Client')   
         powershell(script: 'docker images -a')
       }
     }
@@ -38,8 +37,7 @@ pipeline {
     stage('Stop Test Application') {
       steps {
         powershell(script: 'docker-compose down') 
-        // powershell(script: 'docker volumes prune -f')   		
-      }
+      } 
       post {
 	    success {
 	      echo "Build successfull! You should deploy! :)"
