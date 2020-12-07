@@ -32,6 +32,7 @@ pipeline {
     stage('Run Integration Tests') {
       steps {
         powershell(script: './Tests/ContainerTests.ps1') 
+        powershell(script: './Tests/ContainerTests2.ps1') 
       }
     }
     stage('Stop Test Application') {
