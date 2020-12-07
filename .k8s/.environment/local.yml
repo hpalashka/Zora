@@ -7,8 +7,8 @@ data:
   event-bus-host: event-bus
   event-bus-user: rabbitmquser
   notifications-allowed-origins: http://localhost
-  web-identity-endpoint: http://identity-service:5005
-  web-students-endpoint: http://students-service:5003
+  web-identity-endpoint: http://localhost:5005
+  web-students-endpoint: http://localhost:5003
   web-payments-endpoint: http://payments-service:5011
   web-statistics-endpoint: http://statistics-service:5013
   web-outstandingpayments-endpoint: http://outstandingpayments-service:5009
