@@ -73,11 +73,6 @@ spec:
             secretKeyRef:
               name: environment-secrets
               key: identity-service-connection-string
-        #- name: IdentitySettings__AdminPassword
-        #  valueFrom:
-        #    secretKeyRef:
-        #      name: environment-secrets
-        #      key: admin-password
         volumeMounts:
         - name: identity-service-data
           mountPath: /root/.aspnet/DataProtection-Keys

@@ -12,12 +12,12 @@ data:
   web-payments-endpoint: http://payments-service:5011
   web-statistics-endpoint: http://statistics-service:5013
   web-outstandingpayments-endpoint: http://outstandingpayments-service:5009
+  watchdog-web-health: http://web-client:5001/health
   watchdog-identity-health: http://identity-service:5005/health
   watchdog-students-health: http://students-service:5003/health
   watchdog-payments-health: http://payments-service:5011/health
   watchdog-statistics-health: http://statistics-service:5013/health
   watchdog-notifications-health: http://notifications-service:5004/health
-  watchdog-web-health: http://web-client:5001/health
 
 ---
 
@@ -32,12 +32,9 @@ data:
   statistics-database-sa-password: c3RhdGlzdGljc0RhdGFiYXNlUGFzc3dvcmQxMiFA
   web-database-sa-password: d2ViRGF0YWJhc2VQYXNzd29yZDEyIUA=
   security-token-secret: UGluayBGbHVmZnkgVW5pY29ybnMgRGFuY2luZyBvbiB0aGUgUmFpbmJvdw==
-  #admin-password: YWRtaW5wYXNzMTIh
   identity-service-connection-string: U2VydmVyPWlkZW50aXR5LWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFJZGVudGl0eURhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPWlkZW50aXR5RGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWU=
   students-service-connection-string: U2VydmVyPXN0dWRlbnRzLWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFTdHVkZW50c0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXN0dWRlbnRzRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWU=
-  #dealers-service-cron-jobs-connection-string: U2VydmVyPWRlYWxlcnMtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsRGVhbGVyc0Nyb25Kb2JzRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9ZGVhbGVyc0RhdGFiYXNlUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
   payments-service-connection-string: U2VydmVyPXBheW1lbnRzLWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFQYXltZW50c0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXBheW1lbnRzRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUK
-  #statistics-service-cron-jobs-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsU3RhdGlzdGljc0Nyb25Kb2JzRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9c3RhdGlzdGljc0RhdGFiYXNlUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
   statistics-service-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Wm9yYVN0YXRpc3RpY3NEYXRhYmFzZTtVc2VyIElkPXNhOyBQYXNzd29yZD1zdGF0aXN0aWNzRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUKCg==
   web-service-connection-string: U2VydmVyPXdlYi1kYXRhYmFzZTtEYXRhYmFzZT1ab3JhRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9d2ViRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUK
   event-bus-password: cmFiYml0bXFQYXNzd29yZDEyIQ==

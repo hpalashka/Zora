@@ -73,11 +73,6 @@ spec:
             secretKeyRef:
               name: environment-secrets
               key: statistics-service-connection-string
-        #- name: ConnectionStrings__CronJobsConnection
-        #  valueFrom:
-        #    secretKeyRef:
-        #      name: environment-secrets
-        #      key: statistics-service-cron-jobs-connection-string
         - name: MessageQueueSettings__Host
           valueFrom:
             configMapKeyRef:
