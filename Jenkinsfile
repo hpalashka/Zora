@@ -34,7 +34,7 @@ pipeline {
         powershell(script: './Tests/ContainerTests.ps1') 
       }
     }
-    /*stage('Stop Test Application') {
+    stage('Stop Test Application') {
       steps {
         powershell(script: 'docker-compose down') 
       } 
@@ -46,7 +46,7 @@ pipeline {
 	      echo "Build failed! You should receive an e-mail! :("
 	    }
       }
-    }*/
+    }
     stage('Push Images') {
       when { branch 'master' }
       steps {
