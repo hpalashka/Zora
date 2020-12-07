@@ -3,13 +3,9 @@ do {
     $count++
     Write-Output "[$env:STAGE_NAME] Starting container [Attempt: $count]"
     
-    $webStart = Invoke-WebRequest -Uri http://localhost:5001 -UseBasicParsing
-
-    Write-Output "Tests results:"
-    Write-Output "Web " $webStart.statuscode 
+    $testStart = Invoke-WebRequest -Uri http://localhost:5001 -UseBasicParsing
     
-    if ($webStart.statuscode -eq '200')
-    {
+    if ($testStart.statuscode -eq '200') {
         $started = $true
     } else {
         Start-Sleep -Seconds 5
@@ -20,7 +16,3 @@ do {
 if (!$started) {
     exit 1
 }
-
-
-
-
