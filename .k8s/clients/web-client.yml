@@ -91,7 +91,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: environment-settings
-              key: web-statistics-endpoint
+              key: web-outstandingpayments-endpoint
         volumeMounts:
         - name: web-service-data
           mountPath: /root/.aspnet/DataProtection-Keys

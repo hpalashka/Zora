@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: outstandingpayments-service-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadOnlyMany 
+  resources:
+    requests:
+      storage: 10Mi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: outstandingpayments-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5009
+    targetPort: 80
+  selector:
+    web-service: outstandingpayments
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: outstandingpayments-service
+spec:
+  selector:
+    matchLabels:
+      web-service: outstandingpayments
+  template:
+    metadata:
+      labels:
+        web-service: outstandingpayments
+        system: server
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                web-service: outstandingpayments
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: outstandingpayments-service
+        image: hpalashka/zora-outstandingpayments-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        env:
+        - name: ApplicationSettings__Secret
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: security-token-secret
+        - name: ServiceEndpoints__Students
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-students-endpoint
+        - name: ServiceEndpoints__Payments
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: web-payments-endpoint
+        volumeMounts:
+        - name: outstandingpayments-service-data
+          mountPath: /root/.aspnet/DataProtection-Keys
+      volumes:
+      - name: outstandingpayments-service-data
+        persistentVolumeClaim:
+          claimName: outstandingpayments-service-data

@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: watchdog-client
-        image: hpalashka/zora-watchdog-service
+        image: hpalashka/zora-watchdog-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80

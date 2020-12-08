@@ -3,8 +3,6 @@ do {
     $count++
     Write-Output "[$env:STAGE_NAME] Starting container [Attempt: $count]"
 
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 # at some point started crashing without this???
-   
     $testStart = Invoke-WebRequest -Uri http://localhost:5001 -UseBasicParsing
     
     if ($testStart.statuscode -eq '200') {
