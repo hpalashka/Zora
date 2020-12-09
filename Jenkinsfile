@@ -44,6 +44,7 @@ pipeline {
       }
     }
 
+    /*to do uncomment*/
     /*stage('Run Integration Tests') {
       steps {
         powershell(script: './Tests/ContainerTests.ps1') 
@@ -65,7 +66,7 @@ pipeline {
     }
 
     stage('Push Images for Dev') {
-      when { branch 'dev' }
+      when { branch 'main' } /*to do change*/
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/','DockerHubCredentials') {
@@ -100,7 +101,7 @@ pipeline {
     }
 
     stage('Push Images for Production') {
-      when { branch 'master' }
+      when { branch 'dev' } /*to do change*/
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/','DockerHubCredentials') {
