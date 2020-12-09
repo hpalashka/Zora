@@ -2,9 +2,12 @@
 <ul class="navbar-nav ml-auto">
     @if (!string.IsNullOrEmpty(currentUser.UserId))
     {
-        <li class="nav-item active">
-            <a class="nav-link" asp-controller="Users" asp-action="Profile" title="Manage">@UITextConstants.Profile</a>
-        </li>
+        @if (!currentUser.IsAdministrator)
+        {
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Users" asp-action="Profile" title="Manage">@UITextConstants.Profile</a>
+            </li>
+        }
         <li class="nav-item active">
             <form class="form-inline my-2 my-lg-0" asp-controller="Users" asp-action="Logout">
                 <button type="submit" class="nav-link btn btn-link">@UITextConstants.Logout</button>

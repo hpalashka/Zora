@@ -34,4 +34,8 @@
     <ProjectReference Include="..\Zora.Payments.Application\Zora.Payments.Application.csproj" />
     <ProjectReference Include="..\Zora.Payments.Domain\Zora.Payments.Domain.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>

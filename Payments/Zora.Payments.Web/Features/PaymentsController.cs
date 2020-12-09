@@ -48,9 +48,11 @@ namespace Zora.Payments.Web.Features
 
             var result = await Send(command);
 
-            await _publisher.Publish(messageData);
+            //todo uncomment- removed temporary messaging
+            //await _publisher.Publish(messageData);
 
-            await _paymentService.MarkMessageAsPublished(message.Id);
+            //todo uncomment- removed temporary messaging
+            //await _paymentService.MarkMessageAsPublished(message.Id);
 
             return result;
         }
@@ -138,9 +140,11 @@ namespace Zora.Payments.Web.Features
 
             var result = await Send(command);
 
-            await _publisher.Publish(messageData);
+            //todo uncomment for messaging
+            // await _publisher.Publish(messageData);
 
-            await _paymentService.MarkMessageAsPublished(message.Id);
+            //todo uncomment for messaging
+            //await _paymentService.MarkMessageAsPublished(message.Id);
 
             return result;
 

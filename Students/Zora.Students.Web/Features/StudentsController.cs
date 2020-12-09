@@ -46,9 +46,11 @@ namespace Zora.Students.Web.Features
 
             var result = await Send(command);
 
-            await _publisher.Publish(messageData);
+            //todo uncomment- removed temporary messaging
+            //await _publisher.Publish(messageData);
 
-            await _studentService.MarkMessageAsPublished(message.Id);
+            //todo uncomment- removed temporary messaging
+            //await _studentService.MarkMessageAsPublished(message.Id);
 
             return result;
 

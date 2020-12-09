@@ -19,10 +19,11 @@ namespace Zora.Shared.Infrastructure.Persistence
 
         public async Task Save(TEntity entity, CancellationToken cancellationToken = default, params Message[] messages)
         {
-            foreach (var message in messages)
-            {
-                this.Data.Update(message);
-            }
+            //todo uncomment for messaging
+            //foreach (var message in messages)
+            //{
+            //    this.Data.Update(message);
+            //}
 
             this.Data.Update(entity);
 

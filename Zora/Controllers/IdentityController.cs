@@ -51,7 +51,9 @@ namespace Zora.Web.Controllers
                               });
                       },
 
-                      success: RedirectToAction("Profile", "Users"),
+                      //todo change back to this
+                      //success: RedirectToAction("Profile", "Users"),
+                      success: RedirectToAction("Index", "Home"),
                       failure: RedirectToAction("Index", "Home"));
 
 
