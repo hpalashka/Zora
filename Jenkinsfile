@@ -132,7 +132,7 @@ pipeline {
         }
       }
     } 
-*/
+
     stage('Deploy dev') {
       when { branch 'dev' }
       steps {
