@@ -66,7 +66,7 @@ pipeline {
     }
 
     stage('Push Images for Dev') {
-      when { branch 'main' } /*to do change*/
+      when { branch 'master' } /*to do change*/
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/','DockerHubCredentials') {
