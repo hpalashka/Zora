@@ -62,7 +62,7 @@ pipeline {
 	    }
       }
     }
-    
+
     stage('Push Images for Dev') {
       when { branch 'dev' }
       steps {
@@ -150,7 +150,7 @@ pipeline {
 
     /*todo change connection data and env file kato napravq branchovete*/
     stage('Deploy Production') {
-      when { branch 'main' }
+      when { branch 'master' }
       steps {
         script {
           withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: '35.223.10.211']) {
