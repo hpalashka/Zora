@@ -62,6 +62,7 @@ pipeline {
 	    }
       }
     }
+    
     stage('Push Images for Dev') {
       when { branch 'dev' }
       steps {
@@ -95,6 +96,7 @@ pipeline {
           }
         }
       }
+    }
 
     stage('Push Images for Production') {
       when { branch 'master' }
@@ -141,10 +143,11 @@ pipeline {
 		       powershell(script: 'kubectl apply -f ./.k8s/event-bus')
 		       powershell(script: 'kubectl apply -f ./.k8s/web-services')
            powershell(script: 'kubectl apply -f ./.k8s/clients')
-          
+          }
         }
       }
     } 
+
     /*todo change connection data and env file kato napravq branchovete*/
     stage('Deploy Production') {
       when { branch 'main' }
@@ -158,15 +161,17 @@ pipeline {
 		       powershell(script: 'kubectl apply -f ./.k8s/web-services')
            powershell(script: 'kubectl apply -f ./.k8s/clients')
           
+          }
         }
       }
     } 
-  /*todo samo za dev kato go napravq*/
+    /*todo samo za dev kato go napravq*/
     stage('Run Integration Tests') {
       steps {
         powershell(script: './Tests/DevelopmentContainerTests.ps1') 
       }
     }
+
   }
 }
-}
+
