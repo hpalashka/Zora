@@ -49,7 +49,7 @@ namespace Zora.Payments.Web.Features
             var result = await Send(command);
 
             //todo uncomment- removed temporary messaging
-            //await _publisher.Publish(messageData);
+            await _publisher.Publish(messageData);
 
             //todo uncomment- removed temporary messaging
             //await _paymentService.MarkMessageAsPublished(message.Id);
@@ -140,8 +140,7 @@ namespace Zora.Payments.Web.Features
 
             var result = await Send(command);
 
-            //todo uncomment for messaging
-            // await _publisher.Publish(messageData);
+            await _publisher.Publish(messageData);
 
             //todo uncomment for messaging
             //await _paymentService.MarkMessageAsPublished(message.Id);

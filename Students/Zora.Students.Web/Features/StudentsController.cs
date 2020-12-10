@@ -46,8 +46,7 @@ namespace Zora.Students.Web.Features
 
             var result = await Send(command);
 
-            //todo uncomment- removed temporary messaging
-            //await _publisher.Publish(messageData);
+            await _publisher.Publish(messageData);
 
             //todo uncomment- removed temporary messaging
             //await _studentService.MarkMessageAsPublished(message.Id);
@@ -75,7 +74,7 @@ namespace Zora.Students.Web.Features
             return await Send(command);
         }
 
-    
+
         [HttpGet]
         [Route(Id)]
         [AllowAnonymous]
