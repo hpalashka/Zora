@@ -138,18 +138,6 @@ pipeline {
       when { branch 'dev' }
       steps {
         script {
-          def USER_INPUT = input(
-            message: 'Do you confirm deployment?',
-            parameters: [
-              [$class: 'ChoiceParameterDefinition',
-              choices: ['no','yes'].join('\n'),
-              name: 'input',
-              description: 'Plese confirm that you want to publish this to production.']
-            ])
-
-            echo "The answer is: ${USER_INPUT}"
-
-            if( "${USER_INPUT}" == "yes"){
               withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) 
               {
                 powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
@@ -158,10 +146,6 @@ pipeline {
                 powershell(script: 'kubectl apply -f ./.k8s/web-services')
                 powershell(script: 'kubectl apply -f ./.k8s/clients')
               }
-            } else {
-              echo "User refused deployment."
-               /*to do add production tests*/
-            }
         }
       }
     } 
