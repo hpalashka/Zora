@@ -177,7 +177,6 @@ pipeline {
               }
             } else {
               echo "User refused deployment."
-               /*to do add production tests*/
             }
         }
       }
@@ -187,6 +186,33 @@ pipeline {
       when { branch 'dev' }
       steps {
         powershell(script: './Tests/DevelopmentContainerTests.ps1') 
+      }
+      post {
+        success {
+          echo "Deployment successful."
+        }
+        failure {
+          emailext body: 'Deployment failed! Check latest deployment.',
+          subject: 'Deployment failed',
+          to: 'hristina.palashka@gmail.com'
+        }
+      }
+    }
+
+    stage('Run Integration Tests') {
+      when { branch 'master' }
+      steps {
+        powershell(script: './Tests/ProductionContainerTests.ps1') /*todo update file with new ip*/
+      }
+      post {
+        success {
+          echo "Deployment successful."
+        }
+        failure {
+          emailext body: 'Deployment failed! Check latest deployment.',
+          subject: 'Deployment failed',
+          to: 'hristina.palashka@gmail.com'
+        }
       }
     }
   }
