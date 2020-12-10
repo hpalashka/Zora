@@ -66,7 +66,7 @@ pipeline {
     }
 
     stage('Push Images for Dev') {
-      when { branch 'master' } /*to do change*/
+      when { branch 'dev' } 
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/','DockerHubCredentials') {
@@ -101,7 +101,7 @@ pipeline {
     }
 
     stage('Push Images for Production') {
-      when { branch 'dev' } /*to do change*/
+      when { branch 'master' } 
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/','DockerHubCredentials') {
@@ -134,48 +134,77 @@ pipeline {
       }
     } 
 
-    stage('Deploy dev') {
+      stage('Deploy Dev') {
       when { branch 'dev' }
       steps {
         script {
-          withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: '35.223.10.211']) {
+          def USER_INPUT = input(
+            message: 'Do you confirm deployment?',
+            parameters: [
+              [$class: 'ChoiceParameterDefinition',
+              choices: ['no','yes'].join('\n'),
+              name: 'input',
+              description: 'Plese confirm that you want to publish this to production.']
+            ])
 
-		       powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
-		       powershell(script: 'kubectl apply -f ./.k8s/databases')
-		       powershell(script: 'kubectl apply -f ./.k8s/event-bus')
-		       powershell(script: 'kubectl apply -f ./.k8s/web-services')
-           powershell(script: 'kubectl apply -f ./.k8s/clients')
-          }
+            echo "The answer is: ${USER_INPUT}"
+
+            if( "${USER_INPUT}" == "yes"){
+              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) 
+              {
+                powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
+                powershell(script: 'kubectl apply -f ./.k8s/databases')
+                powershell(script: 'kubectl apply -f ./.k8s/event-bus')
+                powershell(script: 'kubectl apply -f ./.k8s/web-services')
+                powershell(script: 'kubectl apply -f ./.k8s/clients')
+              }
+            } else {
+              echo "User refused deployment."
+               /*to do add production tests*/
+            }
         }
       }
     } 
 
-    /*todo change connection data and env file kato napravq branchovete*/
-    /*add if statement*/
-    /*add confirmation*/
+    /*todo change connection data and env file*/
     stage('Deploy Production') {
       when { branch 'master' }
       steps {
         script {
-          withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) {
+          def USER_INPUT = input(
+            message: 'Do you confirm deployment?',
+            parameters: [
+              [$class: 'ChoiceParameterDefinition',
+              choices: ['no','yes'].join('\n'),
+              name: 'input',
+              description: 'Plese confirm that you want to publish this to production.']
+            ])
 
-		       powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
-		       powershell(script: 'kubectl apply -f ./.k8s/databases')
-		       powershell(script: 'kubectl apply -f ./.k8s/event-bus')
-		       powershell(script: 'kubectl apply -f ./.k8s/web-services')
-           powershell(script: 'kubectl apply -f ./.k8s/clients')
-          
-          }
+            echo "The answer is: ${USER_INPUT}"
+
+            if( "${USER_INPUT}" == "yes"){
+              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) 
+              {
+                powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
+                powershell(script: 'kubectl apply -f ./.k8s/databases')
+                powershell(script: 'kubectl apply -f ./.k8s/event-bus')
+                powershell(script: 'kubectl apply -f ./.k8s/web-services')
+                powershell(script: 'kubectl apply -f ./.k8s/clients')
+              }
+            } else {
+              echo "User refused deployment."
+               /*to do add production tests*/
+            }
         }
       }
     } 
-    /*todo samo za dev kato go napravq*/
+  
     stage('Run Integration Tests') {
+      when { branch 'dev' }
       steps {
         powershell(script: './Tests/DevelopmentContainerTests.ps1') 
       }
     }
-
   }
 }
 

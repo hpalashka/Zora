@@ -14,34 +14,34 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-bus
+  name: rabbitmq
 spec:
   clusterIP: None
   ports:
   - port: 5672
     targetPort: 5672
   selector:
-    event-bus: rabbitmq
+    rabbitmq: rabbitmq
 
 ---
 
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: event-bus
+  name: rabbitmq
 spec:
-  serviceName: event-bus
+  serviceName: rabbitmq
   selector:
     matchLabels: 
-      event-bus: rabbitmq
+      rabbitmq: rabbitmq
   template:
     metadata:
       labels:
-        event-bus: rabbitmq
+        rabbitmq: rabbitmq
         system: event-bus
     spec:
       containers:
-      - name: event-bus
+      - name: rabbitmq
         image: rabbitmq:3-management
         imagePullPolicy: IfNotPresent
         ports:
