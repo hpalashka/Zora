@@ -182,7 +182,7 @@ pipeline {
       }
     } 
   
-    stage('Run Integration Tests') {
+    stage('Run Integration Tests Dev') {
       when { branch 'dev' }
       steps {
         powershell(script: './Tests/DevelopmentContainerTests.ps1') 
@@ -199,7 +199,7 @@ pipeline {
       }
     }
 
-    stage('Run Integration Tests') {
+    stage('Run Integration Tests Production') {
       when { branch 'master' }
       steps {
         powershell(script: './Tests/ProductionContainerTests.ps1') /*todo update file with new ip*/
