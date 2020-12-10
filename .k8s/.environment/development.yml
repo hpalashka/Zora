@@ -4,8 +4,8 @@ metadata:
   name: environment-settings
 data:
   seed-initial-data: "True"
-  event-bus-host: event-bus
-  event-bus-user: rabbitmquser
+  event-bus-host: rabbitmq
+  event-bus-user: rabbitmq
   notifications-allowed-origins: http://34.70.174.34
   web-identity-endpoint: http://identity-service:5005
   web-students-endpoint: http://students-service:5003
@@ -37,4 +37,4 @@ data:
   payments-service-connection-string: U2VydmVyPXBheW1lbnRzLWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFQYXltZW50c0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXBheW1lbnRzRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUK
   statistics-service-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Wm9yYVN0YXRpc3RpY3NEYXRhYmFzZTtVc2VyIElkPXNhOyBQYXNzd29yZD1zdGF0aXN0aWNzRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUKCg==
   web-service-connection-string: U2VydmVyPXdlYi1kYXRhYmFzZTtEYXRhYmFzZT1ab3JhRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9d2ViRGF0YWJhc2VQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWUK
-  event-bus-password: cmFiYml0bXFQYXNzd29yZDEyIQ==
+  event-bus-password: cmFiYml0bXE=
