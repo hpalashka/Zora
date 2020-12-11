@@ -1,10 +1,5 @@
 pipeline {
   agent any
-
-   environment { 
-        version = "1.0.${env.BUILD_ID}"
-        watchdog="kubectl set image deployments/watchdog-client watchdog-client=hpalashka/zora-watchdog-service:${env.version}"
-    }
   stages {
     
     stage('Verify Branch') {
