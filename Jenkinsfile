@@ -174,7 +174,17 @@ pipeline {
                 powershell(script: 'kubectl apply -f ./.k8s/event-bus')
                 powershell(script: 'kubectl apply -f ./.k8s/web-services')
                 powershell(script: 'kubectl apply -f ./.k8s/clients')
+
+                powershell(script: 'kubectl set image deployments/watchdog-client watchdog-client=hpalashka/zora-watchdog-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/web-service web-service=hpalashka/zora-web-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/identity-service identity-service=hpalashka/zora-identity-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/notifications-service notifications-service=hpalashka/zora-notifications-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/outstandingpayments-service outstandingpayments-service=hpalashka/zora-outstandingpayments-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/payments-service payments-service=hpalashka/zora-payments-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/statistics-service statistics-service=hpalashka/zora-statistics-service:"1.0.${env.BUILD_ID}"')
+                powershell(script: 'kubectl set image deployments/students-service students-service=hpalashka/zora-student-service:"1.0.${env.BUILD_ID}"')
               }
+              
             } else {
               echo "User refused deployment."
             }
@@ -182,7 +192,7 @@ pipeline {
       }
     } 
   
-    stage('Run Integration Tests') {
+    stage('Run Integration Tests Dev') {
       when { branch 'dev' }
       steps {
         powershell(script: './Tests/DevelopmentContainerTests.ps1') 
@@ -199,7 +209,7 @@ pipeline {
       }
     }
 
-    stage('Run Integration Tests') {
+    stage('Run Integration Tests Production') {
       when { branch 'master' }
       steps {
         powershell(script: './Tests/ProductionContainerTests.ps1') /*todo update file with new ip*/
