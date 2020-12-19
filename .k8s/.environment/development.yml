@@ -6,7 +6,7 @@ data:
   seed-initial-data: "True"
   event-bus-host: rabbitmq
   event-bus-user: rabbitmq
-  notifications-allowed-origins: http://34.70.174.34
+  notifications-allowed-origins: http://35.198.12.132 
   web-identity-endpoint: http://identity-service:5005
   web-students-endpoint: http://students-service:5003
   web-payments-endpoint: http://payments-service:5011

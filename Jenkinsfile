@@ -138,7 +138,7 @@ pipeline {
       when { branch 'dev' }
       steps {
         script {
-              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) 
+              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.199.87.61']) 
               {
                 powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
                 powershell(script: 'kubectl apply -f ./.k8s/databases')
@@ -167,7 +167,7 @@ pipeline {
             echo "The answer is: ${USER_INPUT}"
 
             if( "${USER_INPUT}" == "yes"){
-              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.223.10.211']) 
+              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.199.87.61']) 
               {
                 powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
                 powershell(script: 'kubectl apply -f ./.k8s/databases')
