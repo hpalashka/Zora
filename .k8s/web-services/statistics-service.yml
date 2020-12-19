@@ -31,9 +31,16 @@ kind: Deployment
 metadata:
   name: statistics-service
 spec:
+  replicas: 3
   selector:
     matchLabels:
       web-service: statistics
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
       labels:
@@ -47,6 +54,7 @@ spec:
               matchLabels:
                 web-service: statistics
             topologyKey: "kubernetes.io/hostname"
+      terminationGracePeriodSeconds: 10
       containers:
       - name: statistics-service
         image: hpalashka/zora-statistics-service:latest
