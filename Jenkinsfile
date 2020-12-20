@@ -44,12 +44,11 @@ pipeline {
       }
     }
 
-    /*to do uncomment*/
-    /*stage('Run Integration Tests') {
+    stage('Run Integration Tests') {
       steps {
         powershell(script: './Tests/ContainerTests.ps1') 
       }
-    }*/
+    }
  
     stage('Stop Test Application') {
       steps {
@@ -150,7 +149,7 @@ pipeline {
       }
     } 
 
-    /*todo change connection data and env file*/
+   
     stage('Deploy Production') {
       when { branch 'master' }
       steps {
@@ -167,7 +166,7 @@ pipeline {
             echo "The answer is: ${USER_INPUT}"
 
             if( "${USER_INPUT}" == "yes"){
-              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.199.87.61']) 
+              withKubeConfig([credentialsId: 'DevelopmentServer', serverUrl: 'https://35.199.87.61']) /*todo - can't deploy QUOTA_EXCEEDED*/
               {
                 powershell(script: 'kubectl apply -f ./.k8s/.environment/development.yml')
                 powershell(script: 'kubectl apply -f ./.k8s/databases')
@@ -212,7 +211,7 @@ pipeline {
     stage('Run Integration Tests Production') {
       when { branch 'master' }
       steps {
-        powershell(script: './Tests/ProductionContainerTests.ps1') /*todo update file with new ip*/
+        powershell(script: './Tests/ProductionContainerTests.ps1') 
       }
       post {
         success {
