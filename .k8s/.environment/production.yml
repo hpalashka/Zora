@@ -4,17 +4,20 @@ metadata:
   name: environment-settings
 data:
   seed-initial-data: "True"
-  event-bus-host: event-bus
-  event-bus-user: rabbitmquser
-  notifications-allowed-origins: http://{your-user-client-service-host}
-  admin-identity-endpoint: http://identity-service:5001
-  admin-dealers-endpoint: http://dealers-service:5002
-  admin-statistics-endpoint: http://statistics-service:5003
-  watchdog-identity-health: http://identity-service:5001/health
-  watchdog-dealers-health: http://dealers-service:5002/health
-  watchdog-statistics-health: http://statistics-service:5003/health
+  event-bus-host: rabbitmq
+  event-bus-user: rabbitmq
+  notifications-allowed-origins: http://146.148.85.152 #QUOTA_EXCEEDED error 
+  web-identity-endpoint: http://identity-service:5005
+  web-students-endpoint: http://students-service:5003
+  web-payments-endpoint: http://payments-service:5011
+  web-statistics-endpoint: http://statistics-service:5013
+  web-outstandingpayments-endpoint: http://outstandingpayments-service:5009
+  watchdog-web-health: http://web-client:5001/health
+  watchdog-identity-health: http://identity-service:5005/health
+  watchdog-students-health: http://students-service:5003/health
+  watchdog-payments-health: http://payments-service:5011/health
+  watchdog-statistics-health: http://statistics-service:5013/health
   watchdog-notifications-health: http://notifications-service:5004/health
-  watchdog-admin-health: http://admin-client:5000/health
 
 ---
 
@@ -23,14 +26,14 @@ kind: Secret
 metadata:
   name: environment-secrets
 data:
-  identity-database-sa-password: aWRlbnRpdHlEYXRhYmFzZVBhc3N3b3JkMTIhQA==
-  dealers-database-sa-password: ZGVhbGVyc0RhdGFiYXNlUGFzc3dvcmQxMiFA
-  statistics-database-sa-password: c3RhdGlzdGljc0RhdGFiYXNlUGFzc3dvcmQxMiFA
-  security-token-secret: UzBNMyBNNEcxQyBVTjFDMFJOUyBHM04zUjRUM0QgVEgxUyBTM0NSM1Q=
-  admin-password: YWRtaW5wYXNzMTIh
-  identity-service-connection-string: U2VydmVyPWlkZW50aXR5LWRhdGFiYXNlO0RhdGFiYXNlPUNhclJlbnRhbElkZW50aXR5RGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9aWRlbnRpdHlEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
-  dealers-service-connection-string: U2VydmVyPWRlYWxlcnMtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsRGVhbGVyc0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPWRlYWxlcnNEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
-  dealers-service-cron-jobs-connection-string: U2VydmVyPWRlYWxlcnMtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsRGVhbGVyc0Nyb25Kb2JzRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9ZGVhbGVyc0RhdGFiYXNlUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
-  statistics-service-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsU3RhdGlzdGljc0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXN0YXRpc3RpY3NEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
-  statistics-service-cron-jobs-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Q2FyUmVudGFsU3RhdGlzdGljc0Nyb25Kb2JzRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9c3RhdGlzdGljc0RhdGFiYXNlUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
-  event-bus-password: cmFiYml0bXFQYXNzd29yZDEyIQ==
+  identity-database-sa-password: OTlpZGVudGl0eURhdGFiYXNlUGFzc3dvcmQxMiFACg==
+  students-database-sa-password: OTlzdHVkZW50c0RhdGFiYXNlUGFzc3dvcmQxMiFACg==
+  payments-database-sa-password: OTlwYXltZW50c0RhdGFiYXNlUGFzc3dvcmQxMiFA
+  statistics-database-sa-password: OTlzdGF0aXN0aWNzRGF0YWJhc2VQYXNzd29yZDEyIUA=
+  web-database-sa-password: OTl3ZWJEYXRhYmFzZVBhc3N3b3JkMTIhQA==
+  security-token-secret: UGluayBGbHVmZnkgVW5pY29ybnMgRGFuY2luZyBvbiB0aGUgUmFpbmJvdw==
+  identity-service-connection-string: U2VydmVyPWlkZW50aXR5LWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFJZGVudGl0eURhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPTk5aWRlbnRpdHlEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQo=
+  students-service-connection-string: U2VydmVyPXN0dWRlbnRzLWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFTdHVkZW50c0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPTk5c3R1ZGVudHNEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQo=
+  payments-service-connection-string: U2VydmVyPXBheW1lbnRzLWRhdGFiYXNlO0RhdGFiYXNlPVpvcmFQYXltZW50c0RhdGFiYXNlO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPTk5cGF5bWVudHNEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
+  statistics-service-connection-string: U2VydmVyPXN0YXRpc3RpY3MtZGF0YWJhc2U7RGF0YWJhc2U9Wm9yYVN0YXRpc3RpY3NEYXRhYmFzZTtVc2VyIElkPXNhOyBQYXNzd29yZD05OXN0YXRpc3RpY3NEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
+  web-service-connection-string: U2VydmVyPXdlYi1kYXRhYmFzZTtEYXRhYmFzZT1ab3JhRGF0YWJhc2U7VXNlciBJZD1zYTsgUGFzc3dvcmQ9OTl3ZWJEYXRhYmFzZVBhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==

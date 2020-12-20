@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 //using FakeItEasy;
 using Zora.Identity.Data.Models;
-
+  
 namespace Zora.Identity.Services.Identity
 {
        public class JwtTokenGeneratorFakes
