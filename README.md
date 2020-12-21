@@ -7,3 +7,5 @@ Admin module-->Vlizane v profila--> user:hristina.palashka@gmail.com, password: 
 Administrirane-->Upravlenie na potrebitelski acaunti
 
 Sorry, could not deploy to production - QUOTA_EXCEEDED error :(
+
+Added hpa only for the web client. Added rolling update only for the statistics service.
